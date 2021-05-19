@@ -1,0 +1,25 @@
+body {
+    margin: 0px;
+    padding: 0px;
+    background: #f1f1f1;   
+}
+.casilla {
+    margin: 10px 10px 10px 10px;
+    width: 300px;
+    height: 430px;
+    background: #FFF;
+    border-radius: 6px;
+    position: absolute;
+    top: 50%;
+    left: 50%
+    transform: translate(-50%, -50%);
+    box-shadow: 0px 1px 10px 1px #000;
+} 
+.upper-container {
+    height: 150 px;
+    background: #7F00FF;
+}
+.lower-container {
+    height: 280 px;
+    background: white ;
+}
