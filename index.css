@@ -27,17 +27,20 @@ body {
     transform: translate(-50%, -50%);
     box-shadow: 0px 1px 10px 1px #000;
 }
+
 .image-container {
     width: 400px;
     height: 430px;
     border-radius: 50%;
 
 }
-.upper-container {
-    height: 150 px;
+.franja-morada {
+    height: 130px;
+    width: 300px;
     background: #7F00FF;
 }
-.lower-container {
-    height: 280 px;
-    background: white ;
+.franja-menta {
+    height: 130px;
+    width: 300px;
+    background: #98FF98;
 }
