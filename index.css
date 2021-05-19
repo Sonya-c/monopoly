@@ -30,6 +30,7 @@ body {
 .image-container {
     width: 400px;
     height: 430px;
+    border-radius: 50%;
 
 }
 .upper-container {
