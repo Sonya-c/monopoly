@@ -7,6 +7,11 @@ class Casilla {
         this.linkCasilla = null;
     }
 
+    render() {
+        let casillaContenedor = document.createElement("div");
+
+    }
+
     accion(jugador) { /* OVER WRITE THIS METHOD */ }
 }
 
@@ -34,7 +39,7 @@ class GoCarcel extends Casilla {
 
 class CajaComunidad extends Casilla {
     constructor() {
-        super("Caja de cominidad");
+        super("Caja de comunidad");
     }
 }
 

@@ -7,7 +7,7 @@ class Solar extends Propiedad {
      * @param {String} nombre           Nombre de la propiedad
      * @param {Number} precio           Precio de la propiedad
      * @param {Number} renta            Renta basica de la propiedad
-     * @param {Number} rentaPorCasa     Renta con una cada
+     * @param {Number} rentaPorCasa     Renta con una cada    de las casas
      * @param {Number} rentaPorHotel    Renta con un hotel
      * @param {Number} costoCasa        Costo de una casa
      * @param {Number} costoHotel       Costo de un hotel
