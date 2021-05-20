@@ -15,7 +15,6 @@
     <script src="src/Estacion.js"></script>
     <script src="src/Game.js"></script>
 
-    <script src="index.js"></script>
 
     <!-- slider -->
     <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
@@ -38,7 +37,20 @@
 
     <div id="casillas" data-flickity='{"cellAlign": "center", "wrapAround": true, "freeScroll": true, "contain": true, "prevNextButtons": false, "pageDots": false }'>
 
-            <img class="casilla esquina" src="images/GO_MONOPOLOLY.png"/>
+        <div class="casilla esquina">
+            <div class="player-zone">
+                <img src="images/GO_MONOPOLOLY.png" class="player" />
+                <img src="images/GO_MONOPOLOLY.png" class="player" />
+                <img src="images/GO_MONOPOLOLY.png" class="player" />
+                <img src="images/GO_MONOPOLOLY.png" class="player" />
+                <img src="images/GO_MONOPOLOLY.png" class="player" />
+                <img src="images/GO_MONOPOLOLY.png" class="player" />
+                <img src="images/GO_MONOPOLOLY.png" class="player" />
+                <img src="images/GO_MONOPOLOLY.png" class="player" />
+            </div>
+
+            <img src="images/GO_MONOPOLOLY.png"/>
+        </div>
         
 
         <div class="casilla">
@@ -91,6 +103,8 @@
             </div>
         </div>
     </div>
-
 </body>
+
+<script src="index.js"></script>
+
 </html>

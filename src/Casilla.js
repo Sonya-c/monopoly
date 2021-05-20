@@ -1,23 +1,35 @@
 
 class Casilla {
-    constructor(nombre) {
+
+    constructor(id, nombre) {
+        this.id = id;
         this.nombre = nombre;
 
         /** @type {Casilla} */
         this.linkCasilla = null;
+
+        this.init();
     }
 
-    render() {
-        let casillaContenedor = document.createElement("div");
+    init() {
+        /** @type {HTMLElement} */
+        let tablero = document.querySelector('#casillas');
 
+        /** @type {HTMLElement} */
+        this.casillaContenedor = document.createElement("div", { id: this.id });
+        this.casillaContenedor.classList.add('casilla');
+
+        /** @type {HTMLElement} */
+        this.casillaJugadores = document.createElement("div");
+        tablero.appendChild(this.casillaContenedor);
     }
 
     accion(jugador) { /* OVER WRITE THIS METHOD */ }
 }
 
 class Go extends Casilla {
-    constructor() {
-        super("Go");
+    constructor(id) {
+        super(id, "Go");
     }
 
     accion(jugador) {
@@ -26,25 +38,25 @@ class Go extends Casilla {
 }
 
 class Carcel extends Casilla {
-    constructor() {
-        super("Carcel");
+    constructor(id) {
+        super(id, "Carcel");
     }
 }
 
 class GoCarcel extends Casilla {
-    constructor() {
-        super("Ir a carcel");
+    constructor(id) {
+        super(id, "Ir a carcel");
     }
 }
 
 class CajaComunidad extends Casilla {
-    constructor() {
-        super("Caja de comunidad");
+    constructor(id) {
+        super(id, "Caja de comunidad");
     }
 }
 
 class Fortuna extends Casilla {
-    constructor() {
-        super("Chance");
+    constructor(id) {
+        super(id, "Chance");
     }
 }

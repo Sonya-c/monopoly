@@ -20,7 +20,7 @@ const losJugadores = [
 const game = new Game();
 const player = new Jugador("Juanito", null);
 
-const c1 = new Casilla("c1");
+const c1 = new Casilla("c1", "c1");
 
 console.log(c1.accion);
 c1.accion = function accion() {
@@ -29,11 +29,11 @@ c1.accion = function accion() {
 console.log(c1.accion);
 c1.accion();
 
-const p1 = new Propiedad("p1", 100, 100, 100, 100, 100, 100, 100);
-const p2 = new Propiedad("p2", 100, 100, 100, 100, 100, 100, 100);
-const p3 = new Propiedad("p3", 100, 100, 100, 100, 100, 100, 100);
-const p4 = new Propiedad("p4", 100, 100, 100, 100, 100, 100, 100);
-const p5 = new Propiedad("p5", 100, 100, 100, 100, 100, 100, 100);
+const p1 = new Solar("p1", "p1", 100, 100, 100, 100, 100, 100, 100);
+const p2 = new Solar("p2", "p2", 100, 100, 100, 100, 100, 100, 100);
+const p3 = new Solar("p3", "p3", 100, 100, 100, 100, 100, 100, 100);
+const p4 = new Solar("p4", "p4", 100, 100, 100, 100, 100, 100, 100);
+const p5 = new Solar("p5", "p5", 100, 100, 100, 100, 100, 100, 100);
 
 game.nuevaCasilla(c1);
 game.nuevaCasilla(p1);

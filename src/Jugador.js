@@ -21,7 +21,7 @@ class Jugador {
     }
 
     /**
-     * Comprar una propiedad y si bb9esta es exitosa, añadirla a la lista simple.
+     * Comprar una propiedad y si esta es exitosa, añadirla a la lista simple.
      * 
      * @param {Propiedad} propiedad 
      */

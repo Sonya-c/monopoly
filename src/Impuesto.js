@@ -7,12 +7,12 @@ class Impuesto extends Casilla {
      * 
      * @param {String} nombre 
      */
-    constructor(nombre) {
-        super(nombre);
+    constructor(id, nombre) {
+        super(id, nombre);
     }
 
     accion() {
-        console.log("a) Debe pagar el 10% de su patrimonio (dinero, precio de las propiedades esten o no hipotecadas, el precio de los defificios que se posea)",
+        console.log("a) Debe pagar el 10% de su patrimonio (dinero, precio de las propiedades esten o no hipotecadas, el precio de los edificios que se posea)",
             "b) Pagar 20 000");
     }
 }

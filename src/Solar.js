@@ -4,6 +4,7 @@ class Solar extends Propiedad {
      * Representa cada una de las propiedades disponibles para comprar por los jugadores.
      * Ademas de los datos que la conforman, esta tiene un linkPropiedad al siguiente elemento de una lista simple
      * 
+     * @param {String} id
      * @param {String} nombre           Nombre de la propiedad
      * @param {Number} precio           Precio de la propiedad
      * @param {Number} renta            Renta basica de la propiedad
@@ -14,8 +15,8 @@ class Solar extends Propiedad {
      * @param {Number} valorHipoteca    Valor de la hipoteca
      */
 
-    constructor(nombre, precio, renta, rentaPorCasa, rentaPorHotel, costoCasa, costoHotel, valorHipoteca) {
-        super(nombre);
+    constructor(id, nombre, precio, renta, rentaPorCasa, rentaPorHotel, costoCasa, costoHotel, valorHipoteca) {
+        super(id, nombre);
 
         this.precio = precio;
         this.renta = renta;

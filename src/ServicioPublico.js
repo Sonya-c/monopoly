@@ -1,5 +1,5 @@
 class ServicioPublico extends Casilla {
-    constructor(nombre) {
-        super(nombre);
+    constructor(id, nombre) {
+        super(id, nombre);
     }
 }
