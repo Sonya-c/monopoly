@@ -1,46 +1,76 @@
 body {
     margin: 0px;
     padding: 0px;
-    background: #f1f1f1;   
+    background-color: #d6ebd5;
+    font-family: 'Libre Franklin', sans-serif;
 }
-.casilla {
-    margin: 10px 10px 10px 10px;
-    width: 300px;
-    height: 430px;
-    background: #FFF;
-    border-radius: 6px;
-    position: absolute;
-    top: 50%;
-    left: 50%
-    transform: translate(-50%, -50%);
-    box-shadow: 0px 1px 10px 1px #000;
-} 
+
+#header {
+    padding: 5px;
+    color: white;
+    text-align: center;
+    background-color: #d40d2a;
+}
+
+#header h1 {
+    margin: 0;
+    letter-spacing: 2px;
+    font-family: 'Black Han Sans', sans-serif;
+}
+
+#casillas {
+    cursor: grab;
+    margin: auto;
+    overflow: hidden;
+    background-color: #d6ebd5;
+}
+
+#casillas:active {
+    cursor: grabbing;
+}
+
+#casillas:active,
+#casillas:focus {
+    border: none;
+    outline: none;
+}
+
+.casilla,
 .esquinas {
-    margin: 10px 10px 10px 10px;
-    width: 400px;
+    text-align: center;
+    margin: 10px;
+    width: 300px;
+    overflow-y: auto;
+    overflow-x: hidden;
     height: 430px;
     background: #FFF;
-    border-radius: 6px;
-    position: absolute;
-    top: 50%;
-    left: 50%
-    transform: translate(-50%, -50%);
-    box-shadow: 0px 1px 10px 1px #000;
+    border: 2px solid black;
+    box-shadow: 0px 1px 10px 1px #8faa8e;
 }
 
-.image-container {
+.casilla img {
+    max-width: 100%;
+    max-height: 200px;
+    object-fit: cover;
+}
+
+.casilla-header {
+    text-align: center;
+    padding: 5px;
+    max-height: 50px;
+    background-color: #7F00FF;
+}
+
+.casilla-header h2 {
+    margin: 0;
+    font-size: 20px;
+}
+
+.esquina {
     width: 400px;
-    height: 430px;
-    border-radius: 50%;
+}
 
-}
-.franja-morada {
-    height: 120px;
-    width: 300px;
-    background: #7F00FF;
-}
-.franja-menta {
-    height: 120px;
-    width: 300px;
-    background: #98FF98;
+.player {
+    width: 50px;
+    height: 50px;
 }

@@ -17,34 +17,79 @@
 
     <script src="index.js"></script>
 
-    <link rel="text/plain" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
-    <link rel="stylesheet" href="index.css">
+    <!-- slider -->
     <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+    <link rel="text/plain" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@100&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="index.css">
 </head>
 
 <body>
-    <h1>Monopoly LOFI</h1>
+    <header id="header"><h1>Monopoly LOFI</h1></header>
 
     <div id="bar">
 
     </div>
 
-  
 
-    <div class="casillas" data-flickity='{"cellAlign": "center", "wrapAround": true, "freeScroll": true, "contain": true, "prevNextButtons": false, "pageDots": false }'>
-        <div class="esquinas">1
+    <div id="casillas" data-flickity='{"cellAlign": "center", "wrapAround": true, "freeScroll": true, "contain": true, "prevNextButtons": false, "pageDots": false }'>
+
+            <img class="casilla esquina" src="images/GO_MONOPOLOLY.png"/>
         
-            <img src="images/GO_MONOPOLOLY.png" width="384" height="410"/>
-            
+
+        <div class="casilla">
+            <div class="casilla-header">
+                <h2>Titulo</h2>
+            </div>    
         </div>
 
-        <div class="casilla">2
-            <div class="franja-menta"></div>
-           
+        <div class="casilla">
+            <div class="casilla-header">
+                <h2>Titulo</h2>
+            </div> 
+            
+            <div class="casilla-body">
+                <img src="images/GO_MONOPOLOLY.png"/>
+                <div>Hola</div>
+            </div>
         </div>
-        <div class="casilla">3</div>
-        <div class="casilla">4</div>
-        <div class="casilla">5</div>
+
+        <div class="casilla">
+            <div class="casilla-header">
+                <h2>Titulo</h2>
+            </div> 
+            <div class="player-zone">
+                <img src="images/GO_MONOPOLOLY.png" class="player" />
+                <img src="images/GO_MONOPOLOLY.png" class="player" />
+                <img src="images/GO_MONOPOLOLY.png" class="player" />
+                <img src="images/GO_MONOPOLOLY.png" class="player" />
+                <img src="images/GO_MONOPOLOLY.png" class="player" />
+                <img src="images/GO_MONOPOLOLY.png" class="player" />
+                <img src="images/GO_MONOPOLOLY.png" class="player" />
+                <img src="images/GO_MONOPOLOLY.png" class="player" />
+            </div>
+
+            <div class="casilla-body">
+            
+                <img src="images/GO_MONOPOLOLY.png"/>
+                <div>Hola</div>
+            </div>
+        </div>
+        
+        <div class="casilla">
+            <div class="casilla-header">
+                <h2>Titulo</h2>
+            </div> 
+            
+            <div class="casilla-body">
+                <img src="images/GO_MONOPOLOLY.png"/>
+                <div>Hola</div>
+            </div>
+        </div>
     </div>
 
 </body>
