@@ -1,8 +1,14 @@
 body {
     margin: 0px;
     padding: 0px;
+    transition: 5s;
+
     background-color: #d6ebd5;
     font-family: 'Libre Franklin', sans-serif;
+}
+
+button {
+    cursor: pointer;
 }
 
 #header {
@@ -18,10 +24,18 @@ body {
     font-family: 'Black Han Sans', sans-serif;
 }
 
+#header button {
+    background-color: rgb(231, 231, 133);
+    outline: none;
+    border: none;
+    padding: 5px;
+}
+
 #casillas {
     cursor: grab;
     margin: auto;
     overflow: hidden;
+    scroll-behavior: smooth;
     background-color: #d6ebd5;
 }
 
@@ -36,7 +50,7 @@ body {
 }
 
 .casilla,
-.esquinas {
+.esquina {
     text-align: center;
     margin: 10px;
     width: 300px;
@@ -73,4 +87,55 @@ body {
 .player {
     width: 50px;
     height: 50px;
+}
+
+.popUp {
+    box-sizing: border-box;
+    max-width: 330px;
+    max-height: 500px;
+    padding: 10px;
+    overflow-y: auto;
+    background-color: #d6ebd5;
+    box-shadow: 0px 1px 10px 1px #8faa8e;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 99;
+    transform: translate(-50%, -50%);
+}
+
+#game-control {
+    margin: 10px;
+}
+
+#dado1,
+#dado2 {
+    display: inline-block;
+    text-align: center;
+    margin: 10px;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    background-color: white;
+    border: 2px solid black;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
 }

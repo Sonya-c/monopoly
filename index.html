@@ -15,7 +15,6 @@
     <script src="src/Estacion.js"></script>
     <script src="src/Game.js"></script>
 
-
     <!-- slider -->
     <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
     <link rel="text/plain" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
@@ -23,84 +22,66 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@100&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap" rel="stylesheet">
-    
+    <!-- icons -->
+    <script src="https://kit.fontawesome.com/90f13af5e4.js" crossorigin="anonymous"></script>
+
     <link rel="stylesheet" href="index.css">
 </head>
 
 <body>
-    <header id="header"><h1>Monopoly LOFI</h1></header>
+    <header id="header">
+        <h1>Monopoly LOFI</h1>
+        <button class="fas fa-user-cog" onclick="abrirElemento(document.getElementById('elegir-personaje'));"></button>
+        <button class="far fa-question-circle" onclick="abrirElemento(document.getElementById('ayuda'));"></button>
+    </header>
 
-    <div id="bar">
+    <did id="ayuda" style="display: none;" class="popUp">
+        <button onClick="cerrarElemento(this.parentElement);">x</button>
+        INGRESE LA AYUDA AQUI :3
+    </did>
 
+    <div id="elegir-personaje" class="popUp">
+        <button onClick="cerrarElemento(this.parentElement);">x</button>
+        <fieldset>
+            <legend>Skin 1</legend>
+            <label><img src="images/sombrero.png" class="player" /><input type="checkbox" /></label>
+            <label><input type="text" /></label>
+        </fieldset>
+    
+        <fieldset>
+            <legend>Skin 2</legend>
+            <label><img src="images/auto.png" class="player" /><input type="checkbox" /></label>
+            <label><input type="text"/></label>
+        </fieldset>
+    
+        <fieldset>
+            <legend>Skin 3</legend>
+            <label><img src="images/GO_MONOPOLOLY.png" class="player" /><input type="checkbox" /></label>
+            <label><input type="text" /></label>
+        </fieldset>
+
+        <fieldset>
+            <legend>Skin 1</legend>
+            <label><img src="images/GO_MONOPOLOLY.png" class="player" /><input type="checkbox" /></label>
+            <label><input type="text" /></label>
+        </fieldset>
+    
+        <fieldset>
+            <legend>Skin 2</legend>
+            <label><img src="images/GO_MONOPOLOLY.png" class="player" /><input type="checkbox" /></label>
+            <label><input type="text"/></label>
+        </fieldset>
+        <button onClick="formData(this.parentElement)">GO</button>
     </div>
 
-
     <div id="casillas" data-flickity='{"cellAlign": "center", "wrapAround": true, "freeScroll": true, "contain": true, "prevNextButtons": false, "pageDots": false }'>
+    </div>
 
-        <div class="casilla esquina">
-            <div class="player-zone">
-                <img src="images/GO_MONOPOLOLY.png" class="player" />
-                <img src="images/GO_MONOPOLOLY.png" class="player" />
-                <img src="images/GO_MONOPOLOLY.png" class="player" />
-                <img src="images/GO_MONOPOLOLY.png" class="player" />
-                <img src="images/GO_MONOPOLOLY.png" class="player" />
-                <img src="images/GO_MONOPOLOLY.png" class="player" />
-                <img src="images/GO_MONOPOLOLY.png" class="player" />
-                <img src="images/GO_MONOPOLOLY.png" class="player" />
-            </div>
-
-            <img src="images/GO_MONOPOLOLY.png"/>
-        </div>
-        
-
-        <div class="casilla">
-            <div class="casilla-header">
-                <h2>Titulo</h2>
-            </div>    
-        </div>
-
-        <div class="casilla">
-            <div class="casilla-header">
-                <h2>Titulo</h2>
-            </div> 
-            
-            <div class="casilla-body">
-                <img src="images/GO_MONOPOLOLY.png"/>
-                <div>Hola</div>
-            </div>
-        </div>
-
-        <div class="casilla">
-            <div class="casilla-header">
-                <h2>Titulo</h2>
-            </div> 
-            <div class="player-zone">
-                <img src="images/GO_MONOPOLOLY.png" class="player" />
-                <img src="images/GO_MONOPOLOLY.png" class="player" />
-                <img src="images/GO_MONOPOLOLY.png" class="player" />
-                <img src="images/GO_MONOPOLOLY.png" class="player" />
-                <img src="images/GO_MONOPOLOLY.png" class="player" />
-                <img src="images/GO_MONOPOLOLY.png" class="player" />
-                <img src="images/GO_MONOPOLOLY.png" class="player" />
-                <img src="images/GO_MONOPOLOLY.png" class="player" />
-            </div>
-
-            <div class="casilla-body">
-            
-                <img src="images/GO_MONOPOLOLY.png"/>
-                <div>Hola</div>
-            </div>
-        </div>
-        
-        <div class="casilla">
-            <div class="casilla-header">
-                <h2>Titulo</h2>
-            </div> 
-            
-            <div class="casilla-body">
-                <img src="images/GO_MONOPOLOLY.png"/>
-                <div>Hola</div>
-            </div>
+    <div id="game-control">
+        <button id="lanzarDado" onclick="lanzaDado()">Lanzar dados</button>
+        <div id="dados">
+            <div id="dado1">1</div>
+            <div id="dado2">2</div>
         </div>
     </div>
 </body>

@@ -1,57 +1,79 @@
-const losJugadores = [
-    {
-        nombre: "Juan",
-        image: null
-    },
-    {
-        nombre: "Pedro",
-        image: null
-    },
-    {
-        nombre: "Marcus",
-        image: null
-    },
-    {
-        nombre: "Johon",
-        image: null
-    }
-]
-
+/** @type {Game} */
 const game = new Game();
-const player = new Jugador("Juanito", null);
+crearTablero();
 
-const c1 = new Casilla("c1", "c1");
+function crearTablero() {
+    game.nuevaCasilla(new Go("Casilla#01", "Images/GO_MONOPOLOLY.png"));
+    game.nuevaCasilla(new Casilla("Casilla#01", "1", "Images/GO_MONOPOLOLY.png"));
+    game.nuevaCasilla(new Casilla("Casilla#02", "2", "Images/GO_MONOPOLOLY.png"));
+    game.nuevaCasilla(new Casilla("Casilla#03", "3", "Images/GO_MONOPOLOLY.png"));
+    game.nuevaCasilla(new Casilla("Casilla#04", "4", "Images/GO_MONOPOLOLY.png"));
+    game.nuevaCasilla(new Casilla("Casilla#05", "5", "Images/GO_MONOPOLOLY.png"));
+    game.nuevaCasilla(new Casilla("Casilla#06", "6", "Images/GO_MONOPOLOLY.png"));
+    game.nuevaCasilla(new Casilla("Casilla#07", "7", "Images/GO_MONOPOLOLY.png"));
 
-console.log(c1.accion);
-c1.accion = function accion() {
-    console.log("Mayga")
-}
-console.log(c1.accion);
-c1.accion();
-
-const p1 = new Solar("p1", "p1", 100, 100, 100, 100, 100, 100, 100);
-const p2 = new Solar("p2", "p2", 100, 100, 100, 100, 100, 100, 100);
-const p3 = new Solar("p3", "p3", 100, 100, 100, 100, 100, 100, 100);
-const p4 = new Solar("p4", "p4", 100, 100, 100, 100, 100, 100, 100);
-const p5 = new Solar("p5", "p5", 100, 100, 100, 100, 100, 100, 100);
-
-game.nuevaCasilla(c1);
-game.nuevaCasilla(p1);
-game.nuevaCasilla(p2);
-game.nuevaCasilla(p3);
-game.nuevaCasilla(p4);
-game.nuevaCasilla(p5);
-
-for (let jugador of losJugadores) {
-    game.nuevoJugador(new Jugador(jugador.nombre, jugador.image));
+    game.casillas();
 }
 
-player.comprarPropiedad(p1);
-player.comprarPropiedad(p2);
-player.comprarPropiedad(p3);
-player.comprarPropiedad(p4);
-player.comprarPropiedad(p5);
+/**
+ * 
+ * @param {HTMLElement} elemento 
+ */
+function cerrarElemento(elemento) {
+    elemento.style.display = "none";
+}
 
-game.jugadores();
-player.propiedades();
-game.casillas();
+/**
+ * 
+ * @param {HTMLElement} elemento 
+ */
+function abrirElemento(elemento) {
+    elemento.style.display = "block";
+}
+
+function lanzaDado() {
+    game.turno();
+}
+/**
+ * Recibe los datos de la form HTML. 
+ * Si ya hay un juego en marcha, le pregunta a usuario si desea re-iniciar la partida o re-escribe los datos
+ * Sino, crea una nueva partida
+ * 
+ * @param {HTMLElement} form 
+ */
+function formData(form) {
+    if (game.play == true && confirm("Ya hay una partida, ¿Desea re-iniciarla?")) {
+        iniciarJuego(form);
+    } else {
+        iniciarJuego(form);
+    }
+}
+
+/**
+ * Crea una nueva partida con los datos del form
+ * 
+ * @param {HTMLElement} form
+ */
+function iniciarJuego(form) {
+    /** @type {Number} */
+    let numJugadores = 0;
+
+    for (/** @type {HTMLElement} */ const field of form.querySelectorAll("fieldset")) {
+        let checkBox = field.querySelector("input[type=checkbox]");
+        let name = field.querySelector("input[type=text]");
+        let skin = field.querySelector("img");
+
+        if (checkBox.checked) {
+            numJugadores++;
+            game.nuevoJugador(new Jugador("jugador" + numJugadores, name.value, skin));
+        }
+    }
+
+    if (numJugadores >= 2) {
+        cerrarElemento(form);
+        game.play = true;
+        game.jugadores();
+    } else {
+        alert("Seleccione al menos 2 jugadores")
+    }
+}

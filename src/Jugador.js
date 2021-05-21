@@ -4,20 +4,36 @@ class Jugador {
      * De esta manera se manejan los turnos (que se repiten desde le comienzo: PTR_Jugador).
      * Cada jugador tiene un PTR a una lista simple de propiedades. 
      * 
+     * @param {String} id 
      * @param {String} nombre 
-     * @param {Image} ficha 
+     * @param {HTMLImageElement} ficha 
      */
-    constructor(nombre, ficha) {
+    constructor(id, nombre, ficha) {
         /** @type {Number} */
         this.dinero = 1500; // Dinero por defecto
+        this.id = id;
         this.nombre = nombre;
+
         this.ficha = ficha;
+        this.ficha.alt = this.nombre;
 
         /** @type {Jugador} */
         this.linkJugador = null;
 
         /** @type {Propiedad} */
         this.PTR_Propiedad = null;
+
+        /** @type {Casilla} */
+        this.casilla = null;
+    }
+
+    /**
+     * 
+     * @param {Casilla} casilla 
+     */
+    render(casilla) {
+        let contenedor = document.getElementById(casilla.id);
+        let zonaJugadores = contenedor.querySelector(".player-zone").appendChild(this.ficha);
     }
 
     /**
