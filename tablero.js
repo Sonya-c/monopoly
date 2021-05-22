@@ -235,7 +235,7 @@ const tablero = [
     },
     {
         type: "servicio",
-        img: "images/water.jpg",
+        img: "images/grifo.jpg",
         nombre: "Empresa de agua",
         precio: 150,
     },
