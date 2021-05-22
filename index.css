@@ -1,8 +1,6 @@
 body {
     margin: 0px;
     padding: 0px;
-    transition: 5s;
-
     background-color: #d6ebd5;
     font-family: 'Libre Franklin', sans-serif;
 }
@@ -91,7 +89,6 @@ button {
 
 .popUp {
     box-sizing: border-box;
-    max-width: 330px;
     max-height: 500px;
     padding: 10px;
     overflow-y: auto;
@@ -104,8 +101,41 @@ button {
     transform: translate(-50%, -50%);
 }
 
+.opcion-skin {
+    margin: 5px 0px 5px 0px;
+}
+
 #game-control {
     margin: 10px;
+    display: table;
+}
+
+#game-control>div {
+    display: inline-block;
+    display: table-cell;
+}
+
+#control-turno>* {
+    display: block;
+}
+
+#control-lanzar-dados>* {
+    display: block;
+}
+
+#lanzarDado {
+    width: calc(100% - 20px);
+    margin: auto;
+    background-color: #d40d2a;
+    color: rgb(231, 231, 133);
+    border: none;
+    outline: none;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+#lanzarDado:disabled {
+    background-color: #b14a59;
 }
 
 #dado1,

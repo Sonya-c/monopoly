@@ -1,6 +1,11 @@
-
 class Casilla {
 
+    /**
+     * 
+     * @param {Number} id 
+     * @param {String} nombre 
+     * @param {Image} img 
+     */
     constructor(id, nombre, img) {
         this.id = id;
         this.nombre = nombre;
@@ -46,11 +51,16 @@ class Casilla {
         tablero.appendChild(casillaContenedor);
     }
 
-    render() { /* OVER WRITE THIS METHOD */ }
-    accion(jugador) { /* OVER WRITE THIS METHOD */ }
+    render() { console.warn("OVERWRITE THIS METHOD"); }
+    accion(jugador) { console.warn("OVERWRITE THIS METHOD"); }
 }
 
 class Go extends Casilla {
+    /**
+     * 
+     * @param {Number} id 
+     * @param {Image} img 
+     */
     constructor(id, img) {
         super(id, "Go", img);
     }
@@ -61,16 +71,12 @@ class Go extends Casilla {
     }
 }
 
-class Carcel extends Casilla {
-    constructor(id, img) {
-        super(id, "Carcel", img);
-
-        /** @type {String[]} */
-        this.classNames = ["casilla", "esquina"];
-    }
-}
-
 class GoCarcel extends Casilla {
+    /**
+     * 
+     * @param {Number} id 
+     * @param {Image} img 
+     */
     constructor(id, img) {
         super(id, "Ir a carcel", img);
 
@@ -80,13 +86,23 @@ class GoCarcel extends Casilla {
 }
 
 class CajaComunidad extends Casilla {
+    /**
+     * 
+     * @param {Number} id 
+     * @param {Image} img 
+     */
     constructor(id, img) {
         super(id, "Caja de comunidad", img);
     }
 }
 
 class Fortuna extends Casilla {
-    constructor(id) {
-        super(id, "Chance");
+    /**
+     * 
+     * @param {Number} id 
+     * @param {Image} img 
+     */
+    constructor(id, img) {
+        super(id, "Chance", img);
     }
 }

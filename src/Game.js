@@ -1,8 +1,10 @@
 class Game {
 
     constructor() {
-        /** @type {Jugador} Link al jugador actual */
+        /** @type {Jugador} Link al primer jugador */
         this.PTR_Jugador = null;
+        /** @type {Jugador} Link al jugador actual */
+        this.jugador = null;
 
         /** @type {casilla} Link a la casilla actual */
         this.PTR_Casilla = null;
@@ -10,40 +12,112 @@ class Game {
         /** @type {Object.<nombre: string, Image>} Guarda las skins disponibles*/
         this.fichas = {};
 
-        /** @type {Boolean} */
+        /** @type {Boolean} Estado del juego */
         this.play = false;
 
         /** @type {Number} Genera un número al azar */
         this.dado = () => Math.floor(Math.random() * 6) + 1;
     }
 
+    render() {
+        let imgJugador = document.getElementById("jugador-actual");
+        imgJugador.src = this.jugador.ficha.src;
+        imgJugador.alt = this.jugador.nombre;
+    }
+
+    /**
+     * Genera 2 numeros al azar, los muestra en el documento y ejecutar un metodo para mover al jugador.
+     * 
+     */
     turno() {
+        /** @type {Number} */
         let d1 = this.dado();
+        /** @type {Number} */
         let d2 = this.dado();
+
+        // Enviar los datos al documento
         document.getElementById("dado1").innerHTML = d1;
         document.getElementById("dado2").innerHTML = d2;
         document.getElementById("lanzarDado").disabled = true;
 
-        setTimeout(this.moverJugador(d1 + d2));
+        // Para que haya cierto delay, usaremos una promesa
+        /** @type {Promise<Casilla>} */
+        let casilla = new Promise((resolve) => setTimeout(() => resolve(this.moverJugador(d1 + d2)), 500));
+
+        casilla.then((casilla) => {
+
+            let turno = new Promise(() => casilla.accion(this.jugador));
+
+            turno.then(() => {
+                document.getElementById("lanzarDado").disabled = false;
+
+                // El turno del siguiente jugador
+                this.jugador = this.jugador.linkJugador;
+                window.location.href = "#" + this.jugador.casilla.id;
+                this.render();
+            });
+        });
     }
 
-    moverJugador(numeroCasillas) {
-        let casilla = this.PTR_Jugador.casilla;
+    /**
+     * Recorre la lista de jugadores para generar un vector ordenado por el precio del jugador
+     */
+    terminar() {
+        /** @type {Jugador} */
         let jugador = this.PTR_Jugador;
+        /** @type {Jugador} */
+        let tempJugador = jugador.linkJugador;
+        /** @type {Jugador[]} */
+        let ordenGandores = [];
+
+        if (jugador == null) {
+            console.log("No hay jugadores aún.")
+        } else {
+
+            // Creamos un vector
+            do {
+                ordenGandores.push(jugador);
+                jugador = jugador.linkJugador; // Moverse al siguiente jugador
+            } while (jugador != this.PTR_Jugador)
+
+            // Ordenemos el vector
+            for (let i = 1; i <= ordenGandores.length; i++) {
+                for (let j = i + 1; j <= ordenGandores.length; j++) {
+                    if (ordenGandores[i] > ordenGandores[j]) {
+                        tempJugador = ordenGandores[i];
+                        ordenGandores[i] = ordenGandores[j];
+                        ordenGandores[j] = tempJugador;
+                    }
+                }
+            }
+        }
+
+    }
+
+    /**
+     * Dado un numero de casillas al que hay que moverse
+     * 
+     * @param {Number} numeroCasillas   - Numero de casillas al que hay que moverse
+     * @returns {Casilla}               - la casilla en el que cayó el jugador
+     */
+    moverJugador(numeroCasillas) {
+        /** @type {Casilla} */
+        let casilla = this.jugador.casilla;
+        /** @type {Jugador} */
+        let jugador = this.jugador;
 
         if (numeroCasillas > 0) {
             casilla = casilla.linkCasilla;
+
             jugador.casilla = casilla;
             jugador.render(casilla);
             window.location.href = "#" + casilla.id;
 
-            if (casilla instanceof Go) {
-                casilla.accion(jugador);
-            }
-            return setTimeout(() => this.moverJugador(numeroCasillas - 1), 500);
+            if (casilla instanceof Go) casilla.accion(jugador);
+
+            // Para que haya cierto delay, usaremos una promesa
+            return new Promise((resolve) => setTimeout(() => resolve(this.moverJugador(numeroCasillas - 1)), 500));
         } else {
-            casilla.accion(jugador);
-            document.getElementById("lanzarDado").disabled = false;
             return casilla;
         }
     }
@@ -82,9 +156,10 @@ class Game {
 
         if (j == null) {
             // Aun no hay jugadores
+            this.jugador = jugador;
             this.PTR_Jugador = jugador;
             this.PTR_Jugador.linkJugador = jugador;
-
+            this.render();
         } else {
             // Hay un elemento o mas
             while (j.linkJugador != this.PTR_Jugador) {
@@ -112,12 +187,13 @@ class Game {
         } else {
 
             do {
-                console.log(j.nombre);
                 j = j.linkJugador;
 
             } while (j != this.PTR_Jugador)
         }
     }
+
+
 
     casillas() {
         /** @type {Casilla} */

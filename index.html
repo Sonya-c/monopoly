@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Monopoly</title>
     
+    <!-- game data -->
+    <script type="text/javascript" src="tablero.js"></script>
+    <!-- game logic -->
     <script src="src/Jugador.js"></script>
     <script src="src/Casilla.js"></script>
     <script src="src/Impuesto.js"></script>
@@ -29,10 +32,16 @@
 </head>
 
 <body>
+    
+      <!--<audio controls >
+          <source src="Audio/lofi.mp3" type="audio/mpeg"/>
+         </audio> -->   
+        
     <header id="header">
         <h1>Monopoly LOFI</h1>
-        <button class="fas fa-user-cog" onclick="abrirElemento(document.getElementById('elegir-personaje'));"></button>
+        <button class="fas fa-sync-alt"></button>
         <button class="far fa-question-circle" onclick="abrirElemento(document.getElementById('ayuda'));"></button>
+        <button onclick="terminarJuego()">Terminar</button>
     </header>
 
     <did id="ayuda" style="display: none;" class="popUp">
@@ -41,34 +50,51 @@
     </did>
 
     <div id="elegir-personaje" class="popUp">
-        <button onClick="cerrarElemento(this.parentElement);">x</button>
         <fieldset>
-            <legend>Skin 1</legend>
-            <label><img src="images/sombrero.png" class="player" /><input type="checkbox" /></label>
+            <legend>sombrero</legend>
+            <label><img src="Images/sombrero.png" class="player" /><input type="checkbox" /></label>
             <label><input type="text" /></label>
         </fieldset>
     
         <fieldset>
-            <legend>Skin 2</legend>
-            <label><img src="images/auto.png" class="player" /><input type="checkbox" /></label>
+            <legend>Auto</legend>
+            <label><img src="Images/auto.png" class="player" /><input type="checkbox" /></label>
             <label><input type="text"/></label>
         </fieldset>
     
         <fieldset>
-            <legend>Skin 3</legend>
-            <label><img src="images/GO_MONOPOLOLY.png" class="player" /><input type="checkbox" /></label>
+            <legend>Perro</legend>
+            <label><img src="Images/perro.png" class="player" /><input type="checkbox" /></label>
             <label><input type="text" /></label>
         </fieldset>
 
         <fieldset>
-            <legend>Skin 1</legend>
-            <label><img src="images/GO_MONOPOLOLY.png" class="player" /><input type="checkbox" /></label>
+            <legend>Bota</legend>
+            <label><img src="images/bota.png" class="player" /><input type="checkbox" /></label>
             <label><input type="text" /></label>
         </fieldset>
     
         <fieldset>
-            <legend>Skin 2</legend>
-            <label><img src="images/GO_MONOPOLOLY.png" class="player" /><input type="checkbox" /></label>
+            <legend>Barco</legend>
+            <label><img src="images/barco.png" class="player" /><input type="checkbox" /></label>
+            <label><input type="text"/></label>
+        </fieldset>
+
+        <fieldset>
+            <legend>Plancha</legend>
+            <label><img src="images/plancha.png" class="player" /><input type="checkbox" /></label>
+            <label><input type="text"/></label>
+        </fieldset>
+
+        <fieldset>
+            <legend>Carretilla</legend>
+            <label><img src="images/carretilla.png" class="player" /><input type="checkbox" /></label>
+            <label><input type="text"/></label>
+        </fieldset>
+
+        <fieldset>
+            <legend>Gato</legend>
+            <label><img src="images/gato.png" class="player" /><input type="checkbox" /></label>
             <label><input type="text"/></label>
         </fieldset>
         <button onClick="formData(this.parentElement)">GO</button>
@@ -78,10 +104,19 @@
     </div>
 
     <div id="game-control">
-        <button id="lanzarDado" onclick="lanzaDado()">Lanzar dados</button>
-        <div id="dados">
-            <div id="dado1">1</div>
-            <div id="dado2">2</div>
+        <div id="control-turno">
+            <strong>Turno</strong>
+            <img class="player" id="jugador-actual" src="Images/richMan.png" alt="" />
+        </div>
+        <div class="control-player-data">
+            
+        </div>
+        <div id="control-lanzar-dados">
+            <button id="lanzarDado" onclick="lanzaDado()" >Lanza dados</button>
+            <div id="dados">
+                <div id="dado1">1</div>
+                <div id="dado2">2</div>
+            </div>
         </div>
     </div>
 </body>

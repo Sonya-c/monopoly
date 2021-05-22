@@ -6,25 +6,22 @@ class Solar extends Propiedad {
      * 
      * @param {String} id
      * @param {String} nombre           Nombre de la propiedad
+     * @param {Image}  img
      * @param {Number} precio           Precio de la propiedad
      * @param {Number} renta            Renta basica de la propiedad
      * @param {Number} rentaPorCasa     Renta con una cada    de las casas
      * @param {Number} rentaPorHotel    Renta con un hotel
      * @param {Number} costoCasa        Costo de una casa
-     * @param {Number} costoHotel       Costo de un hotel
-     * @param {Number} valorHipoteca    Valor de la hipoteca
      */
 
-    constructor(id, nombre, precio, renta, rentaPorCasa, rentaPorHotel, costoCasa, costoHotel, valorHipoteca) {
-        super(id, nombre);
+    constructor(id, nombre, img, precio, renta, rentaPorCasa, rentaPorHotel, costoCasa) {
+        super(id, nombre, img);
 
         this.precio = precio;
         this.renta = renta;
         this.rentaPorCasa = rentaPorCasa;
         this.rentaPorHotel = rentaPorHotel;
         this.costoCasa = costoCasa;
-        this.costoHotel = costoHotel;
-        this.valorHipoteca = valorHipoteca;
 
         // Valores por defecto
         this.propietario = null;
@@ -68,9 +65,9 @@ class Solar extends Propiedad {
     comprarHotel() {
         if (this.propietario != null) {
             if (this.hotel < 1) {
-                if (this.propietario.dinero >= this.costoHotel) {
+                if (this.propietario.dinero >= this.costoCasa) {
                     this.hotel = 1;
-                    this.propietario.dinero -= this.costoHotel;
+                    this.propietario.dinero -= this.costoCasa;
                     return "Hotel comprado exitosamente."
                 } else {
                     return "No tienes dinero suficiente para comprar este hotel"

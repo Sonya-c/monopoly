@@ -4,8 +4,8 @@ class Propiedad extends Casilla {
      * @param {String} nombre   - Nombre de la propiedad 
      * @param {Number} precio   - Precio de la propiedad 
      */
-    constructor(id, nombre, precio) {
-        super(id, nombre);
+    constructor(id, nombre, img, precio) {
+        super(id, nombre, img);
         this.precio = precio;
 
         /** @type {Jugador} */

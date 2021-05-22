@@ -1,5 +1,12 @@
-class ServicioPublico extends Casilla {
-    constructor(id, nombre) {
-        super(id, nombre);
+class ServicioPublico extends Propiedad {
+    /**
+     * 
+     * @param {Number} id
+     * @param {String} nombre
+     * @param {Image} img 
+     * @param {Number} precio 
+     */
+    constructor(id, nombre, img, precio) {
+        super(id, nombre, img, precio);
     }
 }

@@ -1,18 +1,52 @@
 /** @type {Game} */
 const game = new Game();
+// var pop = new Audio();
+//pop.src = Images / pop.mp3;
+//window.addEventListener('click', () => {
+//document.getElementById("song").play();
+//});
 crearTablero();
 
 function crearTablero() {
-    game.nuevaCasilla(new Go("Casilla#01", "Images/GO_MONOPOLOLY.png"));
-    game.nuevaCasilla(new Casilla("Casilla#01", "1", "Images/GO_MONOPOLOLY.png"));
-    game.nuevaCasilla(new Casilla("Casilla#02", "2", "Images/GO_MONOPOLOLY.png"));
-    game.nuevaCasilla(new Casilla("Casilla#03", "3", "Images/GO_MONOPOLOLY.png"));
-    game.nuevaCasilla(new Casilla("Casilla#04", "4", "Images/GO_MONOPOLOLY.png"));
-    game.nuevaCasilla(new Casilla("Casilla#05", "5", "Images/GO_MONOPOLOLY.png"));
-    game.nuevaCasilla(new Casilla("Casilla#06", "6", "Images/GO_MONOPOLOLY.png"));
-    game.nuevaCasilla(new Casilla("Casilla#07", "7", "Images/GO_MONOPOLOLY.png"));
+    for (let i = 0; i < tablero.length; i++) {
+        /** @type {JSON} */
+        let casilla = tablero[i];
 
-    game.casillas();
+        switch (casilla.type) {
+            case "go":
+                game.nuevaCasilla(new Go("Casilla#" + i, casilla.img));
+                break;
+            case "solar":
+                game.nuevaCasilla(new Solar("Casilla#" + i, casilla.nombre, casilla.img, casilla.precio, casilla.renta, casilla.rentaCasa, casilla.rentaHotel, casilla.costoCasa));
+                break;
+            case "impuesto":
+                game.nuevaCasilla(new Impuesto("Casilla#" + i, casilla.img, casilla.pagar));
+                break;
+            case "estacion":
+                game.nuevaCasilla(new Estacion("Casilla#" + i, casilla.nombre, casilla.img));
+                break;
+            case "chance":
+                game.nuevaCasilla(new Fortuna("Casilla#" + i, casilla.img));
+                break;
+            case "servicio":
+                game.nuevaCasilla(new ServicioPublico("Casilla#" + i, casilla.img));
+                break;
+            case "comunity-chest":
+                game.nuevaCasilla(new CajaComunidad("Casilla#" + i, casilla.img));
+                break;
+            case "carcel":
+                game.nuevaCasilla(new Casilla("Casilla#" + i, casilla.nombre, casilla.img));
+                break;
+            case "free-parking":
+                game.nuevaCasilla(new Casilla("Casilla#" + i, casilla.nombre, casilla.img));
+                break;
+            case "go-to-jail":
+                game.nuevaCasilla(new GoCarcel("Casilla#" + i, casilla.img));
+                break;
+            default:
+                console.warn("Casilla con clasificación erronea", casilla.type);
+        }
+    }
 }
 
 /**
@@ -32,6 +66,7 @@ function abrirElemento(elemento) {
 }
 
 function lanzaDado() {
+    // pop.play();
     game.turno();
 }
 /**
@@ -65,7 +100,7 @@ function iniciarJuego(form) {
 
         if (checkBox.checked) {
             numJugadores++;
-            game.nuevoJugador(new Jugador("jugador" + numJugadores, name.value, skin));
+            game.nuevoJugador(new Jugador("jugador" + numJugadores, name.value, skin.cloneNode()));
         }
     }
 
@@ -76,4 +111,10 @@ function iniciarJuego(form) {
     } else {
         alert("Seleccione al menos 2 jugadores")
     }
+
+
+}
+
+function terminarJuego() {
+    game.terminar();
 }
