@@ -1,11 +1,11 @@
 const tablero = [
     {
         type: "go",
-        img: "Images/GO_MONOPOLOLY.png"
+        img: "images/GO_MONOPOLOLY.png"
     },
     {
         type: "solar",
-        img: "Images/avenidaMediterraneo.jpg",
+        img: "images/avenidaMediterraneo.jpg",
         color: '#8a480f',
         nombre: "Avenida mediterranea",
         precio: 60,
@@ -16,11 +16,11 @@ const tablero = [
     },
     {
         type: "comunity-chest",
-        img: "Images/CommunityChest.png",
+        img: "images/CommunityChest.png",
     },
     {
         type: "solar",
-        img: "Images/AvenidaBaltic.jpg",
+        img: "images/AvenidaBaltic.jpg",
         color: '#8a480f',
         nombre: "Avenida Baltic",
         precio: 60,
@@ -31,18 +31,18 @@ const tablero = [
     },
     {
         type: "impuesto",
-        img: "Images/incomentax.png",
+        img: "images/incomentax.png",
         pagar: 200
     },
     {
         type: "estacion",
-        img: "Images/estacion.png",
+        img: "images/estacion.png",
         nombre: "Playa de palma",
         precio: 200
     },
     {
         type: "solar",
-        img: "Images/avenidaOriental.jpg",
+        img: "images/avenidaOriental.jpg",
         color: '#51d6c2',
         nombre: "Avenida Oriental",
         precio: 100,
@@ -53,11 +53,11 @@ const tablero = [
     },
     {
         type: "chance",
-        img: "Images/Chance.png",
+        img: "images/Chance.png",
     },
     {
         type: "solar",
-        url: "Images/ver.jpg",
+        url: "images/ver.jpg",
         color: '#51d6c2',
         nombre: "Avenida Vermont",
         precio: 100,
@@ -68,7 +68,7 @@ const tablero = [
     },
     {
         type: "solar",
-        img: "Images/avenidaConnecticut.jpg",
+        img: "images/avenidaConnecticut.jpg",
         color: '#51d6c2',
         nombre: "Avenida Connecticut",
         precio: 100,
@@ -79,11 +79,11 @@ const tablero = [
     },
     {
         type: "carcel",
-        img: "Images/Jail.png",
+        img: "images/Jail.png",
     },
     {
         type: "solar",
-        img: "Images/Lugarcharles.jpg",
+        img: "images/Lugarcharles.jpg",
         color: "#d65194",
         nombre: "Lugar san Charles",
         precio: 140,
@@ -94,13 +94,13 @@ const tablero = [
     },
     {
         type: "servicio",
-        img: "Images/electric.jpg",
+        img: "images/electric.jpg",
         nombre: "Compañia Electica",
         precio: 150,
     },
     {
         type: "solar",
-        img: "Images/avenidaStates.jpg",
+        img: "images/avenidaStates.jpg",
         color: "#d65194",
         nombre: "Avenida States",
         precio: 140,
@@ -111,7 +111,7 @@ const tablero = [
     },
     {
         type: "solar",
-        img: "Images/avenidaVirginia.jpg",
+        img: "images/avenidaVirginia.jpg",
         color: "#d65194",
         nombre: "Avenida Virginia",
         precio: 160,
@@ -123,12 +123,12 @@ const tablero = [
     {
         type: "estacion",
         nombre: "Portixol",
-        img: "Images/estacion.png",
+        img: "images/estacion.png",
         precio: 200,
     },
     {
         type: "solar",
-        img: "Images/Lugarsanjames.jpeg",
+        img: "images/Lugarsanjames.jpeg",
         color: "#fcb423",
         nombre: "Lugar San James",
         precio: 180,
@@ -139,11 +139,11 @@ const tablero = [
     },
     {
         type: "comunity-chest",
-        img: "Images/CommunityChest.png",
+        img: "images/CommunityChest.png",
     },
     {
         type: "solar",
-        img: "Images/avenidaTenesi.jpg",
+        img: "images/avenidaTenesi.jpg",
         color: "#fcb423",
         nombre: "Avenida tenesis",
         precio: 180,
@@ -154,7 +154,7 @@ const tablero = [
     },
     {
         type: "solar",
-        img: "Images/avenidany.jpg",
+        img: "images/avenidany.jpg",
         color: "#fcb423",
         nombre: "Avenida nueva york",
         precio: 200,
@@ -165,11 +165,11 @@ const tablero = [
     },
     {
         type: "free-parking",
-        img: "Images/freeparking.jpg"
+        img: "images/freeparking.jpg"
     },
     {
         type: "solar",
-        img: "Images/avenidaKentuchy.jpg",
+        img: "images/avenidaKentuchy.jpg",
         color: "#fc2323",
         nombre: "Avenida Kentucky",
         precio: 220,
@@ -180,11 +180,11 @@ const tablero = [
     },
     {
         type: "chance",
-        img: "Images/Chance.png"
+        img: "images/Chance.png"
     },
     {
         type: "solar",
-        img: "Images/avenidaIndiana.jpg",
+        img: "images/avenidaIndiana.jpg",
         color: "#fc2323",
         nombre: "Avenida indiana",
         precio: 220,
@@ -195,7 +195,7 @@ const tablero = [
     },
     {
         type: "solar",
-        img: "Images/avenidaillions.jpg",
+        img: "images/avenidaillions.jpg",
         color: "#fc2323",
         nombre: "Avenida illionis",
         precio: 220,
@@ -206,13 +206,13 @@ const tablero = [
     },
     {
         type: "estacion",
-        img: "Images/estacion.png",
+        img: "images/estacion.png",
         nombre: "ses iLLetes",
         precio: 200,
     },
     {
         type: "solar",
-        img: "Images/avenidaAtlantic.jpg",
+        img: "images/avenidaAtlantic.jpg",
         color: "#eefa46",
         nombre: "Avenida Atlantic",
         precio: 260,
@@ -224,7 +224,7 @@ const tablero = [
     },
     {
         type: "solar",
-        img: "Images/avenidaVentnor.jpg",
+        img: "images/avenidaVentnor.jpg",
         color: "#eefa46",
         nombre: "Avenida Ventnor",
         precio: 260,
@@ -235,13 +235,13 @@ const tablero = [
     },
     {
         type: "servicio",
-        img: "Images/water.jpg",
+        img: "images/water.jpg",
         nombre: "Empresa de agua",
         precio: 150,
     },
     {
         type: "solar",
-        img: "Images/MarvenGardens.jpg",
+        img: "images/MarvenGardens.jpg",
         color: "#eefa46",
         nombre: "Marven Gardens",
         precio: 280,
@@ -252,11 +252,11 @@ const tablero = [
     },
     {
         type: "carcel",
-        img: "Images/Jail.png",
+        img: "images/Jail.png",
     },
     {
         type: "solar",
-        img: "Images/avenidaPacific.jpg",
+        img: "images/avenidaPacific.jpg",
         color: "#0fd43d",
         nombre: "Avenida Pacific",
         precio: 300,
@@ -267,7 +267,7 @@ const tablero = [
     },
     {
         type: "solar",
-        img: "Images/avenidaCalifornia.jpg",
+        img: "images/avenidaCalifornia.jpg",
         color: "#0fd43d",
         nombre: "Avenida norte California",
         precio: 300,
@@ -278,11 +278,11 @@ const tablero = [
     },
     {
         type: "comunity-chest",
-        img: "Images/CommunityChest.png"
+        img: "images/CommunityChest.png"
     },
     {
         type: "solar",
-        img: "Images/avenidaPenn.jpg",
+        img: "images/avenidaPenn.jpg",
         color: "#0fd43d",
         nombre: "Avenida Pennsylvania",
         precio: 320,
@@ -294,15 +294,15 @@ const tablero = [
     {
         type: "estacion",
         precio: 200,
-        img: "Images/estacion.png",
+        img: "images/estacion.png",
     },
     {
         type: "chance",
-        img: "Images/Chance.png",
+        img: "images/Chance.png",
     },
     {
         type: "solar",
-        img: "Images/parkplace.jpg",
+        img: "images/parkplace.jpg",
         color: "#0f54d4",
         nombre: "Park Place",
         precio: 350,
@@ -318,7 +318,7 @@ const tablero = [
     },
     {
         type: "solar",
-        img: "Images/bwalk.jpg",
+        img: "images/bwalk.jpg",
         color: "#0f54d4",
         nombre: "Boardwalk",
         precio: 400,
