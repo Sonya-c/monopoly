@@ -89,10 +89,10 @@ class Carcel extends Casilla {
      */
     accion(jugador, d1, d2) {
         if (!jugador.enCarcel) {
-            alert("Hola estas visitando");
+            alert("Estás visitando la cárcel");
         } else if (d1 == d2) {
             console.log(d1, d2, d1 == d2);
-            alert("Sales de la carcel");
+            alert("Sales de la cárcel");
             jugador.enCarcel = false;
             jugador.turnosCarcel = 0;
         } else if (jugador.turnosCarcel > 3) {
@@ -101,7 +101,7 @@ class Carcel extends Casilla {
             jugador.enCarcel = false;
             jugador.turnosCarcel = 0;
         } else {
-            alert("Sigues en la carcel, intena sacar ddoble en el siguiente turno");
+            alert("Sigues en la carcel, intena sacar doble en el siguiente turno");
         }
     }
 }
