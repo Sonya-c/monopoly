@@ -32,7 +32,7 @@ function crearTablero() {
                 game.nuevaCasilla(new Fortuna("Casilla#" + i, casilla.img));
                 break;
             case "servicio":
-                game.nuevaCasilla(new ServicioPublico("Casilla#" + i, casilla.img));
+                game.nuevaCasilla(new ServicioPublico("Casilla#" + i, casilla.nombre, casilla.img, casilla.precio));
                 break;
             case "comunity-chest":
                 game.nuevaCasilla(new CajaComunidad("Casilla#" + i, casilla.img));

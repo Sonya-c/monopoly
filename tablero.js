@@ -57,7 +57,7 @@ const tablero = [
     },
     {
         type: "solar",
-        url: "images/ver.jpg",
+        img: "images/ver.jpg",
         color: '#51d6c2',
         nombre: "Avenida Vermont",
         precio: 100,
@@ -95,7 +95,7 @@ const tablero = [
     {
         type: "servicio",
         img: "images/bombillo.png",
-        nombre: "Compañia Electica",
+        nombre: "Compañía Eléctica",
         precio: 150,
     },
     {
