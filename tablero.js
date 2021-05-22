@@ -94,7 +94,7 @@ const tablero = [
     },
     {
         type: "servicio",
-        img: "images/electric.jpg",
+        img: "images/bombillo.png",
         nombre: "Compañia Electica",
         precio: 150,
     },
