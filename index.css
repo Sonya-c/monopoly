@@ -9,9 +9,10 @@ audio {
     height: 30px;
 }
 
-#option-zone > * {
+#option-zone>* {
     display: inline-block;
 }
+
 button {
     cursor: pointer;
 }
@@ -30,7 +31,7 @@ button {
 }
 
 
-#header button{
+#header button {
     height: 100%;
     background-color: rgb(231, 231, 133);
     outline: none;
@@ -87,6 +88,10 @@ button {
     font-size: 20px;
 }
 
+.casilla ul {
+    text-align: left;
+}
+
 .esquina {
     width: 400px;
 }
@@ -114,9 +119,8 @@ button {
     margin: 5px 0px 5px 0px;
 }
 
-#game-control{
+#game-control {
     margin: 10px;
-    display: table-row;
 }
 
 #game-control>div {

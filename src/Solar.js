@@ -26,55 +26,59 @@ class Solar extends Propiedad {
         this.casas = 0;
         this.hotel = 0;
 
-        this.linkCasilla = null; // Link circular a otra casilla de *Juego*
         this.linkPropiedad = null; // Link simple a otra propiedad del *Jugador*
+
+        let li_costoCasa = document.createElement("li");
+        li_costoCasa.innerHTML = "Precio Edificio: " + this.costoCasa;
+        this.data.appendChild(li_costoCasa);
+
+        let li_rentaCasa = document.createElement("li");
+        li_rentaCasa.innerHTML = "Renta por casa: " + this.rentaPorCasa;
+        this.data.appendChild(li_rentaCasa);
+
+        let li_rentaHotel = document.createElement("li");
+        li_rentaHotel.innerHTML = "Precio por Hotel: " + this.rentaPorHotel;
+        this.data.appendChild(li_rentaHotel);
     }
 
-    accionesPropietario() {
-        console.log("a) Comprar casa, b) Comprar hotel, c) Hipotecar, d) Vender");
-    }
     /**
-     * 
-     * @returns {String} resultado de la compra 
+     * Las acciones que el propietario puede hacer sobre su propiedad:
+     * Comprar una nueva casa.
+     * Comprar un hotel.
+     */
+    accionesPropietario() {
+        if (this.casas <= 4 && confirm("¿Quiere compra una casa?" + this.costoCasa))
+            this.comprarCasa();
+        else if (this.hotel != 0 && confirm("¿Quiere comprar un hotel?" + this.costoCasa))
+            this.comprarHotel;
+    }
+
+    /**
+     * Comprar una nueva casa
      */
     comprarCasa() {
-        if (this.propietario != null) {
-            if (this.casas < 4) {
-                if (this.propietario.dinero >= this.costoCasa) {
-                    this.casas += 1;
-                    this.renta = this.casa * this.rentaPorCasa;
-                    this.rropietario.dinero -= this.costoCasa;
-                    return "Casa comprada exitosamente."
-                } else {
-                    return "No tienes suficiente dinero para comprar una casa";
-                }
-            } else {
-                return "Ya tienes 4 casas. No puedes comprar mas."
-            }
+        if (this.propietario.dinero >= this.costoCasa) {
+            this.casas += 1;
+            this.renta = this.casa * this.rentaPorCasa;
+            this.rropietario.dinero -= this.costoCasa;
+
+            alert("Casa comprada exitosamente.")
         } else {
-            return "Esta propiedad no tiene dueño";
+            alert("No tienes suficiente dinero para comprar una casa")
         }
     }
 
     /**
-     * 
-     * @returns {String} resultado de la compra
+     * Comprar un hotel
      */
     comprarHotel() {
-        if (this.propietario != null) {
-            if (this.hotel < 1) {
-                if (this.propietario.dinero >= this.costoCasa) {
-                    this.hotel = 1;
-                    this.propietario.dinero -= this.costoCasa;
-                    return "Hotel comprado exitosamente."
-                } else {
-                    return "No tienes dinero suficiente para comprar este hotel"
-                }
-            } else {
-                return "Esta propiedad ya tiene un hotel";
-            }
+        if (this.propietario.dinero >= this.costoCasa) {
+            this.hotel = 1;
+            this.propietario.dinero -= this.costoCasa;
+
+            alert("Hotel comprado exitosamente.");
         } else {
-            return "Esta propiedad no tiene dueño";
+            alert("No tienes dinero suficiente para comprar este hotel");
         }
     }
 }

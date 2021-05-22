@@ -3,6 +3,9 @@ const game = new Game();
 var audio = document.getElementById("popsound");
 crearTablero();
 
+function prueba() {
+    game.jugador.irCarcel();
+}
 function crearTablero() {
     for (let i = 0; i < tablero.length; i++) {
         /** @type {JSON} */

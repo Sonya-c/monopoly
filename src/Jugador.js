@@ -33,7 +33,7 @@ class Jugador {
     }
 
     /**
-     * 
+     * Actualiza la posición del jugador
      * @param {Casilla} casilla 
      */
     render(casilla) {
@@ -42,7 +42,7 @@ class Jugador {
     }
 
     /**
-     * Comprar una propiedad y si esta es exitosa, añadirla a la lista simple.
+     * Comprada una propiedad, la añade a la lista simple.
      * 
      * @param {Propiedad} propiedad 
      */
@@ -67,6 +67,33 @@ class Jugador {
         }
 
         propiedad.linkPropiedad = null;
+    }
+
+    /**
+     * Busca la carcel y lleva al jugador alli
+     */
+    irCarcel() {
+        /** @type {Casilla} */
+        let casilla = this.casilla;
+        /** @type {Carcel|} */
+        let carcel = null;
+
+        do {
+            console.log(casilla)
+            casilla = casilla.linkCasilla;
+
+            if (casilla instanceof Carcel) {
+                carcel = casilla;
+            }
+        } while (casilla.linkCasilla != this.casilla && carcel != null);
+
+        console.log(carcel)
+        if (carcel != null) {
+            this.enCarcel = true;
+            this.casilla = carcel;
+            this.render(carcel);
+            window.location.href = "#" + carcel.id;
+        }
     }
 
     // ----------- HERRAMIENTAS DE DESARROLLO -------------- //

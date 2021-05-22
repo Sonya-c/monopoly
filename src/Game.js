@@ -17,12 +17,20 @@ class Game {
 
         /** @type {Number} Genera un número al azar */
         this.dado = () => Math.floor(Math.random() * 6) + 1;
+
+        /** @type {Number} Numero de dobles seguidos que ha obtenido el jugador actual */
+        this.dobleSeguidos = 0;
     }
 
     render() {
         let imgJugador = document.getElementById("jugador-actual");
+        let datosJugador = document.getElementById("player-data");
+
+        datosJugador.innerHTML = "dinero: " + this.jugador.dinero;
         imgJugador.src = this.jugador.ficha.src;
         imgJugador.alt = this.jugador.nombre;
+
+
     }
 
     /**
@@ -40,21 +48,29 @@ class Game {
         document.getElementById("dado2").innerHTML = d2;
         document.getElementById("lanzarDado").disabled = true;
 
-        if (!this.jugador.enCarcel) {
+        if (d1 == d2 && this.dobleSeguidos >= 3) {
+            this.jugador.irCarcel();
+        } else if (!this.jugador.enCarcel) {
             // Para que haya cierto delay, usaremos una promesa
             /** @type {Promise<Casilla>} */
             let casilla = new Promise((resolve) => setTimeout(() => resolve(this.moverJugador(d1 + d2)), 500));
 
             casilla.then((casilla) => {
 
-                let turno = new Promise((resolve) => resolve(casilla.accion(this.jugador)));
+                let turno = new Promise((resolve) => resolve(casilla.accion(this.jugador, d1 + d2)));
 
                 turno.then((retunedValue) => {
                     document.getElementById("lanzarDado").disabled = false;
 
-                    // El turno del siguiente jugador
-                    this.jugador = this.jugador.linkJugador;
-                    window.location.href = "#" + this.jugador.casilla.id;
+                    if (d1 != d2) {
+                        // El turno del siguiente jugador
+                        this.jugador = this.jugador.linkJugador;
+                        window.location.href = "#" + this.jugador.casilla.id;
+                        this.dobleSeguidos += 0;
+                    } else {
+                        this.dobleSeguidos += 1;
+                    }
+
                     this.render();
                 });
             });
