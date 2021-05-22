@@ -255,7 +255,7 @@ const tablero = [
     {
         type: "goCarcel",
         nombre: "Ir a la cárcel",
-        img: "Images/Jail.png",
+        img: "Images/goJail.png",
     },
     {
         type: "solar",
