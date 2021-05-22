@@ -79,6 +79,7 @@ const tablero = [
     },
     {
         type: "carcel",
+        nombre: "Ir a la cárcel",
         img: "images/Jail.png",
     },
     {
@@ -165,6 +166,7 @@ const tablero = [
     },
     {
         type: "free-parking",
+        nombre: "Estacionamiento gratis",
         img: "images/freeparking.jpg"
     },
     {
@@ -252,6 +254,7 @@ const tablero = [
     },
     {
         type: "carcel",
+        nombre: "Ir a la cárcel",
         img: "images/Jail.png",
     },
     {
@@ -293,6 +296,7 @@ const tablero = [
     },
     {
         type: "estacion",
+        nombre: "Short Line",
         precio: 200,
         img: "images/estacion.png",
     },

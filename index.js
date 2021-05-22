@@ -1,13 +1,6 @@
 /** @type {Game} */
 const game = new Game();
-
 var audio = document.getElementById("popsound");
-function pop () {
-    audio.play();
-}
-
-
-
 crearTablero();
 
 function crearTablero() {
@@ -26,7 +19,7 @@ function crearTablero() {
                 game.nuevaCasilla(new Impuesto("Casilla#" + i, casilla.img, casilla.pagar));
                 break;
             case "estacion":
-                game.nuevaCasilla(new Estacion("Casilla#" + i, casilla.nombre, casilla.img));
+                game.nuevaCasilla(new Estacion("Casilla#" + i, casilla.nombre, casilla.img, casilla.precio));
                 break;
             case "chance":
                 game.nuevaCasilla(new Fortuna("Casilla#" + i, casilla.img));
@@ -65,11 +58,12 @@ function cerrarElemento(elemento) {
  * @param {HTMLElement} elemento 
  */
 function abrirElemento(elemento) {
+    audio.play();
     elemento.style.display = "block";
 }
 
 function lanzaDado() {
-    // pop.play();
+    audio.play();
     game.turno();
 }
 /**
@@ -80,6 +74,7 @@ function lanzaDado() {
  * @param {HTMLElement} form 
  */
 function formData(form) {
+    audio.play();
     if (game.play == true && confirm("Ya hay una partida, ¿Desea re-iniciarla?")) {
         iniciarJuego(form);
     } else {
@@ -113,11 +108,11 @@ function iniciarJuego(form) {
         game.jugadores();
     } else {
         alert("Seleccione al menos 2 jugadores")
+        
     }
-
-
 }
 
 function terminarJuego() {
+    audio.play();
     game.terminar();
 }

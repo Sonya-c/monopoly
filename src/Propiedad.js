@@ -18,10 +18,10 @@ class Propiedad extends Casilla {
      */
     accion(jugador) {
         if (this.propietario == null) {
-            console.log("¿Desea comparar estas propiedad?");
+            console.log("¿Desea comparar esta propiedad?");
 
         } else if (jugador == this.propietario) {
-            console.log("¿Que deseas hacer con estas propiedad");
+            console.log("¿Que deseas hacer con esta propiedad");
             this.accionesPropietario();
 
         } else {
@@ -29,6 +29,7 @@ class Propiedad extends Casilla {
             this.accionesInquilino();
 
         }
+        return true;
     }
 
     /**

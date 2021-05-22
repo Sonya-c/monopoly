@@ -5,6 +5,13 @@ body {
     font-family: 'Libre Franklin', sans-serif;
 }
 
+audio {
+    height: 30px;
+}
+
+#option-zone > * {
+    display: inline-block;
+}
 button {
     cursor: pointer;
 }
@@ -16,11 +23,6 @@ button {
     background-color: #d40d2a;
 }
 
-#header h2 {
-    margin: 0;
-    text-align: left;
-}
-
 #header h1 {
     margin: 0;
     letter-spacing: 2px;
@@ -28,7 +30,8 @@ button {
 }
 
 
-#header button {
+#header button{
+    height: 100%;
     background-color: rgb(231, 231, 133);
     outline: none;
     border: none;
@@ -111,9 +114,9 @@ button {
     margin: 5px 0px 5px 0px;
 }
 
-#game-control {
+#game-control{
     margin: 10px;
-    display: table;
+    display: table-row;
 }
 
 #game-control>div {

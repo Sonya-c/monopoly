@@ -46,9 +46,9 @@ class Game {
 
         casilla.then((casilla) => {
 
-            let turno = new Promise(() => casilla.accion(this.jugador));
+            let turno = new Promise((resolve) => resolve(casilla.accion(this.jugador)));
 
-            turno.then(() => {
+            turno.then((retunedValue) => {
                 document.getElementById("lanzarDado").disabled = false;
 
                 // El turno del siguiente jugador
@@ -95,7 +95,7 @@ class Game {
     }
 
     /**
-     * Dado un numero de casillas al que hay que moverse
+     * Dado un numero de casillas al que hay que moverse:
      * 
      * @param {Number} numeroCasillas   - Numero de casillas al que hay que moverse
      * @returns {Casilla}               - la casilla en el que cayó el jugador

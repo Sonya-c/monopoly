@@ -52,7 +52,7 @@ class Casilla {
     }
 
     render() { console.warn("OVERWRITE THIS METHOD"); }
-    accion(jugador) { console.warn("OVERWRITE THIS METHOD"); }
+    accion(jugador) { return console.warn("OVERWRITE THIS METHOD");}
 }
 
 class Go extends Casilla {
@@ -82,6 +82,28 @@ class GoCarcel extends Casilla {
 
         /** @type {String[]} */
         this.classNames = ["casilla", "esquina"];
+    }
+
+    accion(jugador) {
+        alert("¡Vas a la cárcel!");
+        console.log(encontrarCarcel());
+    }
+
+    /**
+     * 
+     * @returns {casilla} casilla
+     */
+    encontrarCarcel() {
+        let casilla = this;
+        let encontrada = false;
+
+        do {
+            if (casilla.nombre != "carcel") casilla = casilla.linkCasilla
+            else encontrada = true;
+        } while(casilla.linkCasilla != this && !encontrada);
+    
+        if (encontrada) return casilla
+        else null;
     }
 }
 

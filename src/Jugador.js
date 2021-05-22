@@ -1,7 +1,7 @@
 class Jugador {
     /** 
-     * Representa un jugador normal del juego. Cada jugador tiene un enlace al siguiente formando una lista circular.
-     * De esta manera se manejan los turnos (que se repiten desde le comienzo: PTR_Jugador).
+     * Representa un jugador normal del juego. Cada jugador tiene un enlace al siguiente, formando una lista circular.
+     * De esta manera se manejan los turnos (que se repiten desde el comienzo: PTR_Jugador).
      * Cada jugador tiene un PTR a una lista simple de propiedades. 
      * 
      * @param {String} id 
