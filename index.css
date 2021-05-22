@@ -16,11 +16,17 @@ button {
     background-color: #d40d2a;
 }
 
+#header h2 {
+    margin: 0;
+    text-align: left;
+}
+
 #header h1 {
     margin: 0;
     letter-spacing: 2px;
     font-family: 'Black Han Sans', sans-serif;
 }
+
 
 #header button {
     background-color: rgb(231, 231, 133);

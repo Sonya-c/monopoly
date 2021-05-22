@@ -1,10 +1,13 @@
 /** @type {Game} */
 const game = new Game();
-// var pop = new Audio();
-//pop.src = Images / pop.mp3;
-//window.addEventListener('click', () => {
-//document.getElementById("song").play();
-//});
+
+var audio = document.getElementById("popsound");
+function pop () {
+    audio.play();
+}
+
+
+
 crearTablero();
 
 function crearTablero() {

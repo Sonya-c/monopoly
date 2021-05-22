@@ -57,7 +57,7 @@ const tablero = [
     },
     {
         type: "solar",
-        url: "Images/avenidaVermont.jpg",
+        url: "Images/ver.jpg",
         color: '#51d6c2',
         nombre: "Avenida Vermont",
         precio: 100,
