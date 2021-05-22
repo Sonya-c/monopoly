@@ -7,7 +7,7 @@ class Estacion extends Propiedad {
      * @param {Image} img 
      * @param {Number} precio 
      */
-    constructor(id, nombre, img, precio) {
-        super(id, nombre, img, precio);
+    constructor(id, nombre, img, precio, renta) {
+        super(id, nombre, img, precio, renta);
     }
 }

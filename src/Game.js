@@ -40,23 +40,27 @@ class Game {
         document.getElementById("dado2").innerHTML = d2;
         document.getElementById("lanzarDado").disabled = true;
 
-        // Para que haya cierto delay, usaremos una promesa
-        /** @type {Promise<Casilla>} */
-        let casilla = new Promise((resolve) => setTimeout(() => resolve(this.moverJugador(d1 + d2)), 500));
+        if (!this.jugador.enCarcel) {
+            // Para que haya cierto delay, usaremos una promesa
+            /** @type {Promise<Casilla>} */
+            let casilla = new Promise((resolve) => setTimeout(() => resolve(this.moverJugador(d1 + d2)), 500));
 
-        casilla.then((casilla) => {
+            casilla.then((casilla) => {
 
-            let turno = new Promise((resolve) => resolve(casilla.accion(this.jugador)));
+                let turno = new Promise((resolve) => resolve(casilla.accion(this.jugador)));
 
-            turno.then((retunedValue) => {
-                document.getElementById("lanzarDado").disabled = false;
+                turno.then((retunedValue) => {
+                    document.getElementById("lanzarDado").disabled = false;
 
-                // El turno del siguiente jugador
-                this.jugador = this.jugador.linkJugador;
-                window.location.href = "#" + this.jugador.casilla.id;
-                this.render();
+                    // El turno del siguiente jugador
+                    this.jugador = this.jugador.linkJugador;
+                    window.location.href = "#" + this.jugador.casilla.id;
+                    this.render();
+                });
             });
-        });
+        } else {
+            this.jugador.casilla.accion(this.jugador, d1, d2)
+        }
     }
 
     /**

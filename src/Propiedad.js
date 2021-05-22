@@ -4,10 +4,10 @@ class Propiedad extends Casilla {
      * @param {String} nombre   - Nombre de la propiedad 
      * @param {Number} precio   - Precio de la propiedad 
      */
-    constructor(id, nombre, img, precio) {
+    constructor(id, nombre, img, precio, renta) {
         super(id, nombre, img);
         this.precio = precio;
-
+        this.renta = renta;
         /** @type {Jugador} */
         this.propietario = null;
     }
@@ -18,35 +18,31 @@ class Propiedad extends Casilla {
      */
     accion(jugador) {
         if (this.propietario == null) {
-            console.log("¿Desea comparar esta propiedad?");
-
+            if (confirm("¿Desea comparar esta propiedad?")) this.comprar(jugador);
         } else if (jugador == this.propietario) {
-            console.log("¿Que deseas hacer con esta propiedad");
             this.accionesPropietario();
-
         } else {
-            console.log("Has caido en la propiedad de alguien mas, debes pagar");
-            this.accionesInquilino();
-
+            alert("Has caido en la propiedad de alguien mas, debe pagar renta", this.renta);
+            this.jugador.dinero -= this.renta;
         }
-        return true;
     }
 
     /**
      * 
      * @param {Jugador} jugador 
-     * @returns {String} resultado de la compra
+     * @returns {String}
      */
     comprar(jugador) {
         if (this.jugador == null) {
             if (jugador.dinero >= this.precio) {
                 this.jugador = jugador;
-                return "Propiedad comprada exitosamente"
+                this.jugador.comprarPropiedad(this)
+                alert("Propiedad comprada exitosamente")
             } else {
-                return "No tienes suficiente dinero para comparar esta propiedad.";
+                alert("No tienes suficiente dinero para comparar esta propiedad.");
             }
         } else {
-            return "Esta propiedad ya tiene dueño"
+            alert("Esta propiedad ya tiene dueño")
         }
     }
 

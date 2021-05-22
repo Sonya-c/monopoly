@@ -52,7 +52,7 @@ class Casilla {
     }
 
     render() { console.warn("OVERWRITE THIS METHOD"); }
-    accion(jugador) { return console.warn("OVERWRITE THIS METHOD");}
+    accion(jugador) { return console.warn("OVERWRITE THIS METHOD"); }
 }
 
 class Go extends Casilla {
@@ -71,6 +71,40 @@ class Go extends Casilla {
     }
 }
 
+class Carcel extends Casilla {
+    /**
+     * 
+     * @param {Number} id 
+     * @param {Image} img 
+     */
+    constructor(id, img) {
+        super(id, "Carcel", img);
+    }
+
+    /**
+     * 
+     * @param {Jugador} jugador 
+     * @param {Number} d1 
+     * @param {Number} d2 
+     */
+    accion(jugador, d1, d2) {
+        if (!jugador.enCarcel) {
+            alert("Hola estas visitando");
+        } else if (d1 == d2) {
+            console.log(d1, d2, d1 == d2);
+            alert("Sales de la carcel");
+            jugador.enCarcel = false;
+            jugador.turnosCarcel = 0;
+        } else if (jugador.turnosCarcel > 3) {
+            alert("Llevas 3 turno en la carcel, debes pagar una multa de 50");
+            jugador.dinero -= 50;
+            jugador.enCarcel = false;
+            jugador.turnosCarcel = 0;
+        } else {
+            alert("Sigues en la carcel, intena sacar ddoble en el siguiente turno");
+        }
+    }
+}
 class GoCarcel extends Casilla {
     /**
      * 
@@ -86,22 +120,29 @@ class GoCarcel extends Casilla {
 
     accion(jugador) {
         alert("¡Vas a la cárcel!");
-        console.log(encontrarCarcel());
+        let carcel = this.encontrarCarcel();
+
+        jugador.casilla = carcel;
+        jugador.render(carcel);
+        window.location.href = "#" + carcel.id;
     }
 
     /**
      * 
-     * @returns {casilla} casilla
+     * @returns {Casilla} casilla
      */
     encontrarCarcel() {
+        /** @type {Casilla} */
         let casilla = this;
+        /** @type {boolean} */
         let encontrada = false;
 
         do {
-            if (casilla.nombre != "carcel") casilla = casilla.linkCasilla
+            if (casilla instanceof Carcel) casilla = casilla.linkCasilla
             else encontrada = true;
-        } while(casilla.linkCasilla != this && !encontrada);
-    
+
+        } while (casilla.linkCasilla != this && !encontrada);
+
         if (encontrada) return casilla
         else null;
     }

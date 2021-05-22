@@ -79,8 +79,8 @@ const tablero = [
     },
     {
         type: "carcel",
-        nombre: "Ir a la cárcel",
-        img: "Images/Jail.png",
+        nombre: "cárcel",
+        img: "Images/jail.png",
     },
     {
         type: "solar",
@@ -253,7 +253,7 @@ const tablero = [
         costoCasa: 150
     },
     {
-        type: "carcel",
+        type: "goCarcel",
         nombre: "Ir a la cárcel",
         img: "Images/Jail.png",
     },

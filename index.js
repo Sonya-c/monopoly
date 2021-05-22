@@ -30,8 +30,11 @@ function crearTablero() {
             case "comunity-chest":
                 game.nuevaCasilla(new CajaComunidad("Casilla#" + i, casilla.img));
                 break;
+            case "goCarcel":
+                game.nuevaCasilla(new GoCarcel("Casilla#" + i, casilla.img));
+                break;
             case "carcel":
-                game.nuevaCasilla(new Casilla("Casilla#" + i, casilla.nombre, casilla.img));
+                game.nuevaCasilla(new Carcel("Casilla#" + i, casilla.img));
                 break;
             case "free-parking":
                 game.nuevaCasilla(new Casilla("Casilla#" + i, casilla.nombre, casilla.img));
@@ -108,7 +111,7 @@ function iniciarJuego(form) {
         game.jugadores();
     } else {
         alert("Seleccione al menos 2 jugadores")
-        
+
     }
 }
 

@@ -25,6 +25,11 @@ class Jugador {
 
         /** @type {Casilla} */
         this.casilla = null;
+
+        /** @type {Boolean} */
+        this.enCarcel = false;
+        /** @type {Number} */
+        this.turnosCarcel = 0;
     }
 
     /**
@@ -42,34 +47,26 @@ class Jugador {
      * @param {Propiedad} propiedad 
      */
     comprarPropiedad(propiedad) {
-        /** @type {String} */
-        let resultadoCompra = propiedad.comprar(this);
+        /** @type {Propiedad} */
+        let p = this.PTR_Propiedad;
 
-        if (resultadoCompra == "Propiedad comprada exitosamente") {
-            /** @type {Propiedad} */
-            let p = this.PTR_Propiedad;
+        if (p == null) {
+            // Este jugador aun no tiene propiedades
+            this.PTR_Propiedad = propiedad;
 
-            if (p == null) {
-                // Este jugador aun no tiene propiedades
-                this.PTR_Propiedad = propiedad;
-
-            } else if (p.linkPropiedad == null) {
-                // Solo hay un elemento (PTR)
-                p.linkPropiedad = propiedad;
-
-            } else {
-                // Hay mas de un elemento
-                while (p.linkPropiedad != null) {
-                    p = p.linkPropiedad;
-                }
-                p.linkPropiedad = propiedad;
-            }
-
-            propiedad.linkPropiedad = null;
+        } else if (p.linkPropiedad == null) {
+            // Solo hay un elemento (PTR)
+            p.linkPropiedad = propiedad;
 
         } else {
-            console.log(resultadoCompra);
+            // Hay mas de un elemento
+            while (p.linkPropiedad != null) {
+                p = p.linkPropiedad;
+            }
+            p.linkPropiedad = propiedad;
         }
+
+        propiedad.linkPropiedad = null;
     }
 
     // ----------- HERRAMIENTAS DE DESARROLLO -------------- //

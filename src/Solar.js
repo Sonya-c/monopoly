@@ -15,10 +15,8 @@ class Solar extends Propiedad {
      */
 
     constructor(id, nombre, img, precio, renta, rentaPorCasa, rentaPorHotel, costoCasa) {
-        super(id, nombre, img);
+        super(id, nombre, img, precio, renta);
 
-        this.precio = precio;
-        this.renta = renta;
         this.rentaPorCasa = rentaPorCasa;
         this.rentaPorHotel = rentaPorHotel;
         this.costoCasa = costoCasa;
