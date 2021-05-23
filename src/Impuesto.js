@@ -11,4 +11,12 @@ class Impuesto extends Casilla {
         this.pagar = pagar;
     }
 
+    /**
+     * 
+     * @param {Jugador} jugador 
+     */
+    accion(jugador) {
+        alert("Debes pagar " + this.pagar);
+        jugador.dinero -= this.pagar;
+    }
 }

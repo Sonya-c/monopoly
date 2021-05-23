@@ -5,11 +5,13 @@ class Casilla {
      * @param {Number}  id      Id de la casilla (y de su elemento HTML)
      * @param {String}  nombre  Nombre de la casilla (se vera en el render)
      * @param {Image}   img     Imagen de la casilla (se vera en el render)
+  
      */
-    constructor(id, nombre, img) {
+    constructor(id, nombre, img, ) {
         this.id = id;
         this.nombre = nombre;
         this.img = img;
+     
 
         /** @type {Casilla} Link circular a otra casilla de **Juego** */
         this.linkCasilla = null;
@@ -59,20 +61,20 @@ class Casilla {
     /**
      * @abstract Actualiza y/o modifica el estado inicial del elemento HTML
      */
-    render() { console.warn("OVERWRITE THIS METHOD"); }
+    render() { }
 
     /**
      * @abstract Realiza una acción sobre el usuario que cayó en esta casilla
      * @param {Jugador} jugador 
      */
-    accion(jugador) { console.warn("OVERWRITE THIS METHOD"); }
+    accion(jugador) { }
 }
 
 class Go extends Casilla {
     /**
      * 
-     * @param {Number} id 
-     * @param {Image} img 
+     * @param {Number}  id 
+     * @param {Image}   img 
      */
     constructor(id, img) {
         super(id, "Go", img);
@@ -87,8 +89,8 @@ class Go extends Casilla {
 class Carcel extends Casilla {
     /**
      * 
-     * @param {Number} id 
-     * @param {Image} img 
+     * @param {Number}  id 
+     * @param {Image}   img 
      */
     constructor(id, img) {
         super(id, "Carcel", img);
@@ -97,36 +99,37 @@ class Carcel extends Casilla {
     /**
      * 
      * @param {Jugador} jugador 
-     * @param {Number} d1 
-     * @param {Number} d2 
+     * @param {Number}  d1 
+     * @param {Number}  d2 
      */
     accion(jugador, d1, d2) {
 
         if (!jugador.enCarcel) {
             alert("Estás visitando la cárcel");
+
         } else if (d1 == d2) {
-            console.log(d1, d2, d1 == d2);
             alert("Sales de la cárcel");
+
             jugador.enCarcel = false;
             jugador.turnosCarcel = 0;
 
         } else if (jugador.turnosCarcel > 3) {
-            alert("Llevas 3 turno en la carcel, debes pagar una multa de 50");
+            alert("Llevas 3 turno en la cárcel, debes pagar una multa de 50");
 
             jugador.dinero -= 50;
             jugador.enCarcel = false;
             jugador.turnosCarcel = 0;
 
         } else {
-            alert("Sigues en la carcel, intena sacar doble en el siguiente turno");
+            alert("Sigues en la carcel, ¡intenta sacar dobles en el siguiente turno!");
         }
     }
 }
 class GoCarcel extends Casilla {
     /**
      * 
-     * @param {Number} id 
-     * @param {Image} img 
+     * @param {Number}  id 
+     * @param {Image}   img 
      */
     constructor(id, img) {
         super(id, "Ir a carcel", img);
@@ -149,8 +152,8 @@ class GoCarcel extends Casilla {
 class CajaComunidad extends Casilla {
     /**
      * 
-     * @param {Number} id 
-     * @param {Image} img 
+     * @param {Number}  id 
+     * @param {Image}   img 
      */
     constructor(id, img) {
         super(id, "Caja de comunidad", img);
@@ -160,8 +163,8 @@ class CajaComunidad extends Casilla {
 class Fortuna extends Casilla {
     /**
      * 
-     * @param {Number} id 
-     * @param {Image} img 
+     * @param {Number}  id 
+     * @param {Image}   img 
      */
     constructor(id, img) {
         super(id, "Chance", img);

@@ -80,7 +80,7 @@ const tablero = [
     {
         type: "carcel",
         nombre: "cárcel",
-        img: "Images/jail.png",
+        img: "Images/jail.jpg",
     },
     {
         type: "solar",
@@ -240,6 +240,8 @@ const tablero = [
         img: "Images/water.jpg",
         nombre: "Empresa de agua",
         precio: 150,
+        
+    
     },
     {
         type: "solar",
@@ -254,7 +256,7 @@ const tablero = [
     },
     {
         type: "goCarcel",
-        nombre: "Ir a la cárcel",
+        nombre: "Ir a la carcel",
         img: "Images/goJail.png",
     },
     {

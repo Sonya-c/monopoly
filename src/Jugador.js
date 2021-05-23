@@ -75,19 +75,18 @@ class Jugador {
     irCarcel() {
         /** @type {Casilla} */
         let casilla = this.casilla;
-        /** @type {Carcel|} */
+        /** @type {Carcel} */
         let carcel = null;
 
+        console.log(casilla.linkCasilla);
         do {
-            console.log(casilla)
             casilla = casilla.linkCasilla;
 
             if (casilla instanceof Carcel) {
                 carcel = casilla;
             }
-        } while (casilla.linkCasilla != this.casilla && carcel != null);
+        } while (casilla.linkCasilla != this.casilla && carcel == null);
 
-        console.log(carcel)
         if (carcel != null) {
             this.enCarcel = true;
             this.casilla = carcel;

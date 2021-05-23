@@ -14,12 +14,14 @@ class Solar extends Propiedad {
      * @param {Number} costoCasa        Costo de una casa
      */
 
-    constructor(id, nombre, img, precio, renta, rentaPorCasa, rentaPorHotel, costoCasa) {
+    constructor(id, nombre, img, precio, renta, rentaPorCasa, rentaPorHotel, costoCasa, imagenCasa, imagenHotel) {
         super(id, nombre, img, precio, renta);
 
         this.rentaPorCasa = rentaPorCasa;
         this.rentaPorHotel = rentaPorHotel;
         this.costoCasa = costoCasa;
+        this.imagenCasa = imagenCasa;
+        this.imagenHotel = imagenHotel;
 
         // Valores por defecto
         this.propietario = null;
@@ -50,9 +52,12 @@ class Solar extends Propiedad {
         if (this.casas <= 4 && confirm("¿Quiere compra una casa?" + this.costoCasa))
             this.comprarCasa();
         else if (this.hotel != 0 && confirm("¿Quiere comprar un hotel?" + this.costoCasa))
-            this.comprarHotel;
+            this.comprarHotel();
     }
 
+    accionesInquilino(iquilino) {
+        iquilino.dinero -= this.renta;
+    }
     /**
      * Comprar una nueva casa
      */
@@ -62,10 +67,16 @@ class Solar extends Propiedad {
             this.renta = this.casa * this.rentaPorCasa;
             this.rropietario.dinero -= this.costoCasa;
 
-            alert("Casa comprada exitosamente.")
+            let image = document.createElement("img");
+            image.src = this.img;
+            image.alt = this.imagenCasa;
+            this.casillaBody.appendChild(image);
+
+            alert("Casa comprada exitosamente.");
         } else {
             alert("No tienes suficiente dinero para comprar una casa")
         }
+        
     }
 
     /**
@@ -75,6 +86,11 @@ class Solar extends Propiedad {
         if (this.propietario.dinero >= this.costoCasa) {
             this.hotel = 1;
             this.propietario.dinero -= this.costoCasa;
+
+            let image = document.createElement("img");
+            image.src = this.img;
+            image.alt = this.imagenHotel;
+            this.casillaBody.appendChild(image);
 
             alert("Hotel comprado exitosamente.");
         } else {

@@ -36,7 +36,7 @@ class Propiedad extends Casilla {
      * 
      * @param {Jugador} jugador 
      */
-    accion(jugador) {
+    accion(jugador, d1, d2) {
 
         if (this.propietario == null) {
             if (confirm("¿Desea comparar esta propiedad?")) this.comprar(jugador);
@@ -45,8 +45,8 @@ class Propiedad extends Casilla {
             this.accionesPropietario();
 
         } else {
-            alert("Has caido en la propiedad de alguien mas, debe pagar renta " + this.renta);
-            jugador.dinero -= this.renta;
+            alert("Has caído en la propiedad de alguien más, debes pagar la renta ");
+            this.accionesInquilino(jugador, d1, d2);
         }
     }
 

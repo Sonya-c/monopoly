@@ -26,7 +26,7 @@ class Game {
         let imgJugador = document.getElementById("jugador-actual");
         let datosJugador = document.getElementById("player-data");
 
-        datosJugador.innerHTML = "dinero: " + this.jugador.dinero;
+        datosJugador.innerHTML = "Dinero: $ " + this.jugador.dinero;
         imgJugador.src = this.jugador.ficha.src;
         imgJugador.alt = this.jugador.nombre;
 
@@ -42,16 +42,37 @@ class Game {
         let d1 = this.dado();
         /** @type {Number} */
         let d2 = this.dado();
+        
+        let siguienteTurno = () => {
+            document.getElementById("lanzarDado").disabled = false;
 
+            if (d1 != d2) {
+                // El turno del siguiente jugador
+                this.jugador = this.jugador.linkJugador;
+                window.location.href = "#" + this.jugador.casilla.id;
+                this.dobleSeguidos += 0;
+            } else {
+                this.dobleSeguidos += 1;
+            }
+
+            this.render();
+        }
         // Enviar los datos al documento
         document.getElementById("dado1").innerHTML = d1;
         document.getElementById("dado2").innerHTML = d2;
         document.getElementById("lanzarDado").disabled = true;
 
         if (d1 == d2 && this.dobleSeguidos >= 3) {
+            // Con 3 dobles seguidos cae a la carcel
             this.jugador.irCarcel();
-        } else if (!this.jugador.enCarcel) {
+
+        } else if (this.jugador.enCarcel) {
+            // Esta en prisón
+            this.jugador.casilla.accion(this.jugador, d1, d2);
+            siguienteTurno();
+        } else {
             // Para que haya cierto delay, usaremos una promesa
+
             /** @type {Promise<Casilla>} */
             let casilla = new Promise((resolve) => setTimeout(() => resolve(this.moverJugador(d1 + d2)), 500));
 
@@ -59,23 +80,12 @@ class Game {
 
                 let turno = new Promise((resolve) => resolve(casilla.accion(this.jugador, d1 + d2)));
 
-                turno.then((retunedValue) => {
+                turno.then(() => {
                     document.getElementById("lanzarDado").disabled = false;
-
-                    if (d1 != d2) {
-                        // El turno del siguiente jugador
-                        this.jugador = this.jugador.linkJugador;
-                        window.location.href = "#" + this.jugador.casilla.id;
-                        this.dobleSeguidos += 0;
-                    } else {
-                        this.dobleSeguidos += 1;
-                    }
-
+                    siguienteTurno();
                     this.render();
                 });
             });
-        } else {
-            this.jugador.casilla.accion(this.jugador, d1, d2)
         }
     }
 
@@ -89,6 +99,8 @@ class Game {
         let tempJugador = jugador.linkJugador;
         /** @type {Jugador[]} */
         let ordenGandores = [];
+        /** @type {String} */
+        let resultado = "RANKING"
 
         if (jugador == null) {
             console.log("No hay jugadores aún.")
@@ -101,19 +113,41 @@ class Game {
             } while (jugador != this.PTR_Jugador)
 
             // Ordenemos el vector
-            for (let i = 1; i <= ordenGandores.length; i++) {
-                for (let j = i + 1; j <= ordenGandores.length; j++) {
-                    if (ordenGandores[i] > ordenGandores[j]) {
+            for (let i = 0; i < ordenGandores.length; i++) {
+                for (let j = i + 1; j < ordenGandores.length; j++) {
+
+                    if (ordenGandores[i].dinero < ordenGandores[j].dinero) {
                         tempJugador = ordenGandores[i];
                         ordenGandores[i] = ordenGandores[j];
                         ordenGandores[j] = tempJugador;
                     }
                 }
             }
+
+            for (let i = 0; i < ordenGandores.length; i++) {
+                resultado += "\n" + (i + 1) + ordenGandores[i].nombre + "\t $" + ordenGandores[i].dinero;
+            }
+            alert(resultado);
         }
 
     }
 
+    reiniciar() {
+        // Re-iniciar las casillas
+
+        /** @type {Casilla} */
+        let casilla = this.PTR_Casilla;
+
+        do {
+            casilla = casilla.linkCasilla;
+
+            casilla.init();
+            casilla.render();
+
+
+        } while (casilla.linkCasilla != this.casilla);
+
+    }
     /**
      * Dado un numero de casillas al que hay que moverse:
      * 

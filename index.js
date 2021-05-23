@@ -4,7 +4,7 @@ var audio = document.getElementById("popsound");
 crearTablero();
 
 function prueba() {
-    game.jugador.irCarcel();
+    game.jugador.propiedades();
 }
 function crearTablero() {
     for (let i = 0; i < tablero.length; i++) {
@@ -16,7 +16,7 @@ function crearTablero() {
                 game.nuevaCasilla(new Go("Casilla#" + i, casilla.img));
                 break;
             case "solar":
-                game.nuevaCasilla(new Solar("Casilla#" + i, casilla.nombre, casilla.img, casilla.precio, casilla.renta, casilla.rentaCasa, casilla.rentaHotel, casilla.costoCasa));
+                game.nuevaCasilla(new Solar("Casilla#" + i, casilla.nombre, casilla.img, casilla.precio, casilla.renta, casilla.rentaCasa, casilla.rentaHotel, casilla.costoCasa, "Imagen/casa.png", "Imagen/hotel.jpg"));
                 break;
             case "impuesto":
                 game.nuevaCasilla(new Impuesto("Casilla#" + i, casilla.img, casilla.pagar));
