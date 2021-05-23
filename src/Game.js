@@ -29,8 +29,6 @@ class Game {
         datosJugador.innerHTML = "Dinero: $ " + this.jugador.dinero;
         imgJugador.src = this.jugador.ficha.src;
         imgJugador.alt = this.jugador.nombre;
-
-
     }
 
     /**
@@ -128,8 +126,8 @@ class Game {
                 resultado += "\n" + (i + 1) + ordenGandores[i].nombre + "\t $" + ordenGandores[i].dinero;
             }
             alert(resultado);
+            this.reiniciar();
         }
-
     }
 
     reiniciar() {
@@ -139,13 +137,33 @@ class Game {
         let casilla = this.PTR_Casilla;
 
         do {
-            casilla = casilla.linkCasilla;
+            casilla = casilla.linkCasilla;         
+            casilla.propietario = null;
+            casilla.renta = casilla.rentaBaica;
+
+            if (casilla instanceof Solar) {
+                casilla.casa = null;
+                casilla.linkPropiedad = null;
+                casilla.casas = 0;
+                casilla.hotel = 0;
+            }
 
             casilla.init();
             casilla.render();
+        } while (casilla.linkCasilla != this.PTR_Casilla);
 
+        /** @type {Jugador} */
+        let jugador = this.PTR_Jugador;
+        do {
+            jugador.dinero = 1500;
+            jugador.propiedad =  null;
+            jugador.casilla = this.PTR_Casilla;
+            jugador.enCarcel = false;
+            jugador.turnosCarcel = 0;
 
-        } while (casilla.linkCasilla != this.casilla);
+            jugador.render();
+        } while (jugador.linkJugador != this.PTR_Jugador);
+
 
     }
     /**

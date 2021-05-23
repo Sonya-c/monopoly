@@ -14,10 +14,7 @@ const tablero = [
         rentaHotel: 250,
         costoCasa: 50,
     },
-    {
-        type: "comunity-chest",
-        img: "Images/CommunityChest.png",
-    },
+
     {
         type: "solar",
         img: "Images/AvenidaBaltic.jpg",
@@ -51,10 +48,7 @@ const tablero = [
         rentaHotel: 550,
         costoCasa: 50,
     },
-    {
-        type: "chance",
-        img: "Images/Chance.png",
-    },
+
     {
         type: "solar",
         img: "Images/ver.jpg",
@@ -138,10 +132,7 @@ const tablero = [
         rentaHotel: 950,
         costoCasa: 70,
     },
-    {
-        type: "comunity-chest",
-        img: "Images/CommunityChest.png",
-    },
+
     {
         type: "solar",
         img: "Images/avenidaTenesi.jpg",
@@ -180,10 +171,7 @@ const tablero = [
         rentaHotel: 1050,
         costoCasa: 150,
     },
-    {
-        type: "chance",
-        img: "Images/Chance.png"
-    },
+
     {
         type: "solar",
         img: "Images/avenidaIndiana.jpg",
@@ -281,10 +269,7 @@ const tablero = [
         rentaHotel: 1275,
         costoCasa: 300,
     },
-    {
-        type: "comunity-chest",
-        img: "Images/CommunityChest.png"
-    },
+
     {
         type: "solar",
         img: "Images/avenidaPenn.jpg",
@@ -302,10 +287,7 @@ const tablero = [
         precio: 200,
         img: "Images/estacion.png",
     },
-    {
-        type: "chance",
-        img: "Images/Chance.png",
-    },
+
     {
         type: "solar",
         img: "Images/parkplace.jpg",

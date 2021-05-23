@@ -7,6 +7,7 @@ class Propiedad extends Casilla {
     constructor(id, nombre, img, precio, renta) {
         super(id, nombre, img);
         this.precio = precio;
+        this.rentaBaica = renta;
         this.renta = renta;
 
         /** @type {Jugador} */

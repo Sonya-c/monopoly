@@ -8,27 +8,56 @@ class Estacion extends Propiedad {
      * @param {Number} precio 
      */
     constructor(id, nombre, img, precio, renta) {
-        super(id, nombre, img, precio, renta);
+        super(id, nombre, img, precio, "Depende");
     }
 
-    numeroEstaciones() {
+    accionesPropietario() { /* OVERWRITE THIS */ }
+
+    /**
+     * 
+     * @param {Jugador} inquilino 
+     */
+    accionesInquilino(inquilino) {
+        /** @type {Estacion[]} */
+        let estaciones = this.getEstaciones();
+        let pagar = 0;
+
+        switch (estaciones.length) {
+            case 1:
+                pagar = 25;
+                break;
+            case 2:
+                pagar = 50;
+                break;
+            case 3:
+                pagar = 100;
+                break;
+            case 4:
+                pagar = 200;
+                break;
+            default:
+                pagar = 0;
+        }
+
+        alert("Ha caido en la estación de alguien más con " + estaciones.length + "estaciones, debe pagar: " + pagar);
+        inquilino.dinero -= pagar;
+    }
+
+    getEstaciones() {
         /** @type {Casilla} */
         let casilla = this.linkCasilla;
-        /** @type {ServicioPublico} */
-        let estaciones = [null];
+        /** @type {Estacion[]} */
+        let estaciones = [];
 
         do {
             if (casilla instanceof estación && casilla.propietario == this.propietario) {
-                estación = casilla;
+                estaciones.push(casilla)
             }
 
             casilla = casilla.linkCasilla;
 
         } while (casilla.linkCasilla != this && estación == null);
 
-        if (estación != this && estación != null) {
-            return 2;
-        }
-        return 1;
+        return estaciones;
     }
 }
