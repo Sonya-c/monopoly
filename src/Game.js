@@ -126,46 +126,10 @@ class Game {
                 resultado += "\n" + (i + 1) + ordenGandores[i].nombre + "\t $" + ordenGandores[i].dinero;
             }
             alert(resultado);
-            this.reiniciar();
+            location.reload();
         }
     }
 
-    reiniciar() {
-        // Re-iniciar las casillas
-
-        /** @type {Casilla} */
-        let casilla = this.PTR_Casilla;
-
-        do {
-            casilla = casilla.linkCasilla;         
-            casilla.propietario = null;
-            casilla.renta = casilla.rentaBaica;
-
-            if (casilla instanceof Solar) {
-                casilla.casa = null;
-                casilla.linkPropiedad = null;
-                casilla.casas = 0;
-                casilla.hotel = 0;
-            }
-
-            casilla.init();
-            casilla.render();
-        } while (casilla.linkCasilla != this.PTR_Casilla);
-
-        /** @type {Jugador} */
-        let jugador = this.PTR_Jugador;
-        do {
-            jugador.dinero = 1500;
-            jugador.propiedad =  null;
-            jugador.casilla = this.PTR_Casilla;
-            jugador.enCarcel = false;
-            jugador.turnosCarcel = 0;
-
-            jugador.render();
-        } while (jugador.linkJugador != this.PTR_Jugador);
-
-
-    }
     /**
      * Dado un numero de casillas al que hay que moverse:
      * 

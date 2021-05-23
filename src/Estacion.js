@@ -22,7 +22,7 @@ class Estacion extends Propiedad {
         let estaciones = this.getEstaciones();
         let pagar = 0;
 
-        switch (estaciones.length) {
+        switch (estaciones.length()) {
             case 1:
                 pagar = 25;
                 break;
@@ -37,9 +37,10 @@ class Estacion extends Propiedad {
                 break;
             default:
                 pagar = 0;
+                break;
         }
 
-        alert("Ha caido en la estación de alguien más con " + estaciones.length + "estaciones, debe pagar: " + pagar);
+        alert("Ha caido en la estación de alguien");
         inquilino.dinero -= pagar;
     }
 
